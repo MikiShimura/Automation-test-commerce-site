@@ -1,0 +1,178 @@
+Test Case Id,FE_OR_BE,Tested-Item,Test Case Name,Description,CODE-PROVIDED
+TCID-1,FE,home_page,Verify number of products displayed,,TRUE
+TCID-67,FE,home_page,Verify the heading is displayed on the home page,,TRUE
+TCID-68,FE,home_page,Verify header menu is displayed,,TRUE
+TCID-12,FE,my_account_page_signed_out,User with none-existing email should get correct error message,,TRUE
+TCID-13,FE,my_account_page_signed_out,Register valid new user,,TRUE
+TCID-33,FE,end-to-end-fe,Checkout as guest user end-to-end,,TRUE
+TCID-69,FE,component-banner,Verify the free shpping banner is displayed in the home page,,TRUE
+TCID-70,FE,component-banner,Verify the free shpping banner is displayed in the cart page,,TRUE
+TCID-71,FE,component-banner,Verify the free shpping banner is displayed in the checkout page,,TRUE
+TCID-72,FE,component-banner,Verify the free shpping banner is NOT idsplayed in the my account page,,TRUE
+TCID-80,FE,product_detail_page,Test variable product page verify product name,"Verify the product name is displayed
+in the product description page for a variable product",TRUE
+TCID-81,FE,product_detail_page,Test variable product page verify main image,"Verify the product main image is displayed
+in the product description page for a variable product",TRUE
+TCID-82,FE,product_detail_page,Test variable product page verify extra images,"Verify the product extra/thumbnail images are displayed
+in the product description page for a variable product",TRUE
+TCID-83,FE,product_detail_page,Test variable product page verify product type text,"Verify the ""product type"" text is displayed
+in the product description page for a variable product",TRUE
+TCID-84,FE,product_detail_page,Test variable product page verify price range before option selection,"For a variable product a price range must be displayed 
+in the product description page. Verify the price range is displayed",TRUE
+TCID-85,FE,product_detail_page,Test variable product page verify add to cart btn displayed,,TRUE
+TCID-86,FE,product_detail_page,Test variable product page verify quantity field,,TRUE
+TCID-87,FE,product_detail_page,Test variable product page verify sku,Verify the displayed sku matchs the product sku,TRUE
+TCID-88,FE,product_detail_page,Test variable product page verify category,Verify the category field on the page,TRUE
+TCID-89,FE,product_detail_page,Test variable product page verify description,Verify the description section on the page,TRUE
+TCID-90,FE,product_detail_page,Test variable product page verify description header,Verify the header for the description section,TRUE
+TCID-91,FE,product_detail_page,Test variable product page related items header,Verify the header for the related items section,TRUE
+TCID-92,FE,product_detail_page,Test variable product page related items list,"Verify the related items section has list of related items.
+Prodcuts api will have a list of related items use that to compare it to.",TRUE
+TCID-93,FE,product_detail_page,Test variable product page left nav tab labels,"On the left nab there are 3 items for a variable product page.
+Verify the label/test of each of those items",TRUE
+TCID-94,FE,product_detail_page,Test variable product page color dropdown label,Verify the label for the 'Color' options dropdown,TRUE
+TCID-95,FE,product_detail_page,Test variable product page logo dropdown label,Verify the label for the 'Logo' options dropdown,TRUE
+TCID-96,FE,product_detail_page,Test variable product pdp select options add to cart,"Verify the add to cart button work in product description page.
+Click the button to add to cart, then go to cart page and 
+verify product has been added.",TRUE
+TCID-97,FE,product_detail_page,Test variable product number of options,"Verify the options displayed for a variable product are as expecte.
+product API will give what the options should be.",TRUE
+TCID-98,FE,product_detail_page,Test variable product values of color options,,TRUE
+TCID-99,FE,product_detail_page,Test variable product values of logo options,,TRUE
+TCID-100,FE,product_detail_page,Test variable product clear selection btn when only color is selected,"Select a color from the colors list and click on reset.
+Verify all fields are reset.",TRUE
+TCID-101,FE,product_detail_page,Test variable product clear selection btn when only logo is selected,,TRUE
+TCID-102,FE,product_detail_page,Test variable product clear selection btn when both color and logo are selected,,TRUE
+TCID-66,FE,cart_page,Applying expired coupon should show correct error message,,TRUE
+TCID-2,FE,home_page,There should be 4 columns of products,,
+TCID-3,FE,home_page,There should be 4 rows of products,,
+TCID-4,FE,home_page,"""Shop"" heading should be displayed",,
+TCID-5,FE,home_page,Sorting dropdown should be displayed on top of page,,
+TCID-35,FE,home_page,Sorting dropdown should be displayed on bottom of page,,
+TCID-73,FE,home_page,Top nave should have correct pages displayed,,
+TCID-74,FE,home_page,Top nav bar each menue item should open correct page,,
+TCID-103,FE,home_page,Clicking a product should open the product details page,"Click on any product on the page and verify the page that opens is the product details page
+One of the verifications can be that the url contains "".com/product/",
+TCID-104,FE,home_page,Verify each product displays the name under the image,"Loop through each product on the page and verify the name of the product is displayed.
+Verify a string is displayed no need to verify actual name for this test.",
+TCID-105,FE,home_page,Verify the price of the product is displayed under each product,Loop through each product and verify the price is displayed under the product.,
+TCID-106,FE,home_page,"Verify the ""SALE!"" badge is displayed for products that are on sale","Search for a product that is on sale. Can hard code a product name.
+In the search result veiryf the small box with text ""SALE!"" is displayed",
+TCID-107,FE,home_page,Verify the 'Add to Cart' or 'Select Options' button is displayed for each product,"On the home page each product should have a button. If the product is 
+a variation product the button will say ""Select Option"" if not then the button will say ""Add to cart"".
+Every product must have one of those so loop through each product and verify the button exissts.",
+TCID-108,FE,home_page,"Verify ""Select Options"" button is siplayed for a variation product","Search for a variation product. Can hard code a product name.
+In the search result verify the button below the image says ""Select Options""",
+TCID-109,FE,home_page,"Verify ""Select Options"" button opens the product details page","Search for a variation product. Can hard code a product name.
+In the search result verify the button below the image says ""Select Options""
+Click the button and verify the product detail page opens",
+TCID-110,FE,home_page,"Verify the ""Add to cart"" button adds to cart","Search for a product or loop all products on home page until a 'add to cart' button is found.
+Click the button and verify item is added to cart
+You can go to .com/cart page to verify there is an item in the cart",
+TCID-111,FE,home_page,"Verify clicking the ""Add to cart"" button displayes new button with text ""View cart""","When clicking the 'Add to cart' button, a new button is displayed with text ""View cart"".
+Verify the new button is displayed and the text is correct.
+Would be nice to verify the color of the new button too.",
+TCID-112,FE,home_page,Verify sell item shows two prices with one crossed out,"Find an item that is on sale or hard code it. 
+Search for the product so it is displayed on the home page.
+Verify the original price and sale price are displayed and the original price has strike through. ",
+TCID-113,FE,home_page,"Verify the text ""Showing X-Y of Z results"" text is displayed next to sorting dropdown","There should a text showing how many products are displayed.
+This text apears next to the sorting dropdown. 
+Verify text is displayed. Total number of products can change all the time so use regex to verify the text is displayed.",
+TCID-114,FE,home_page,Verify products on the home page have image,"
+Find book that has an image or hard code it.
+Search for the book.
+ Verify the src of the img tag ends with .jpg",
+TCID-115,FE,component-search,Verify the search field is visible on every page,Go through each page and verify the search field is visible,
+TCID-116,FE,component-search,Verify the search field is functional on every page,"Go through each page and search for a product that exists.
+Verify search result is displayed",
+TCID-117,FE,component-search,Verify searching for a product that does not exist shows correct message,"Input random string into the search field.
+Verify the result page shows message""No products were found matching your selection."" is displayed.",
+TCID-118,FE,component-footer,Verify footer is displayed on every page,,
+TCID-119,FE,component-footer,Verify footer has a link to WooCommerce,"Verify there is text ""Built with Storefront & WooCommerce."" displayed and clicking it opens up WooCommerce home page in a new tab.",
+TCID-120,FE,component-footer,"Verify ""© Demo Store 2022"" is displayed in footer",,
+TCID-44,FE,cart_page,50% off cart coupon should discount 50% of the cart,,
+TCID-75,FE,cart_page,Verify success message after applying coupon,,
+TCID-121,FE,cart_page,Verify failure message when invalid coupon is applied,,
+TCID-122,FE,cart_page,Verify remove coupon button is displayed,"Aftery applying a coupon, verify removing the coupon button is displayed.",
+TCID-76,FE,cart_page,Verify remove coupon button works,"Aftery applying a coupon, verify removing the coupon workss",
+TCID-129,FE,cart_page,Verify the heade with text 'Cart' is displayed in empty cart page,"Go to the cart page without adding any item to the cart and verify the header ""Cart"" is displayed.",
+TCID-130,FE,cart_page,Verify the heade with text 'Cart' is displayed in cart page with item in cart,"Go to the cart page after adding an item and verify the header ""Cart"" is displayed",
+TCID-131,FE,cart_page,Verify the cart column headers in cart page with item in cart,"When there is an item(s) in a cart, there should be columns.
+The columns are ""Product"", ""Price"", ""Quantity"", ""Subtotal""",
+TCID-132,FE,cart_page,"Verify clicking the ""X"" removes the item from cart when there is 1 item in cart",,
+TCID-133,FE,cart_page,"Verify clicking the ""X"" removes 1 item when there are two items in the cart",Verify one item is removed and the other item remains.,
+TCID-134,FE,cart_page,"Verify clicking the ""X"" removes item with multple quantity","Verify the item is completely removed by clicking the ""X"" even if it has multiple quanity.
+The quantity field for the item is more than 2.",
+TCID-135,FE,cart_page,"Verify clicking the ""X"" on multiple items removes the items when there are more items in the cart","Cart has 4 items, click the ""X"" for the 2 items. Verify 2 items remain in cart.",
+TCID-136,FE,cart_page,Verify the image a of the product is displayed when there is 1 item in cart,,
+TCID-137,FE,cart_page,Verifyt he images of all products are displayed when there 2 products in cart,,
+TCID-138,FE,cart_page,Verify the name of the product is displayed and it is a link to the product details page,Verify the name of the product is displayed. Click the name and verify the prodduct details page opens.,
+TCID-139,FE,cart_page,Verify the correct price is displayed for a product when there is 1 product in cart,,
+TCID-140,FE,cart_page,Verify the correct price is displayed for a product when there are 2 products in cart,,
+TCID-141,FE,cart_page,Verify the correct quantity is displayed in quantity field for a product when there is 1 product in cart,,
+TCID-142,FE,cart_page,Verify the correct quantity is displayed for each product when there are 2 products in cart,,
+TCID-143,FE,cart_page,Verify the subtotal column shows correct price for a product when there is 1 product in cart,,
+TCID-144,FE,cart_page,Verify the subtotal column shows correct price for each product where there are 2 products in cart,,
+TCID-145,FE,cart_page,"Verify the ""Update Cart"" button is visible but disabled","When item is added to cart and the page loads, the ""update cart"" button
+should be disabled. It only gets enabled when there a change in the cart.
+Verify it is disabled.",
+TCID-146,FE,cart_page,"Verify the ""Update Cart"" becomes enabled when quanity in the cart is changed.","Cange the value of the quanitty field. Verify the ""Update cart"" button becomes active.",
+TCID-147,FE,cart_page,"Verify heading ""Cart subtotals"" is displayed","Ther is a section under the products list that summerizes the cart.
+Verify there is header with text ""Cart subtotals""",
+TCID-148,FE,cart_page,"Verify the cart subtotals section has ""Subtotal"" label",,
+TCID-149,FE,cart_page,Verity the cart subtotals section has the correct subtotal amount when there is 1 product in cart,Add item to cart and veriy the section at the bottom shows the correct value for subtotal,
+TCID-150,FE,cart_page,Verity the cart subtotals section has the correct subtotal amount when there are 2 product in cart,Add 2 items to cart and verity the section at the bottom shows the correct value,
+TCID-151,FE,cart_page,Verify the cart subtotals section updates the 'subtotal' value when item is removed from cart,"Add 2 items to cart, get the value of the subtotal, remove one of the items from the cart, verify the subtotal value gets updated.",
+TCID-152,FE,cart_page,Verify the cart subtotals section updates the 'subtotal' value when quanity of an item is increased,"Add an item to cart, change the quanitty field to 2. 
+Verify the subtotal is updated",
+TCID-153,FE,cart_page,Verify the cart subtotals section updates the 'subtotal' value when quanity of an item is decreased,,
+TCID-154,FE,cart_page,Verify the 'subtotal' column gets updated when quanity gets updated.,Increase the quantity field and verify the subtotal column gets updated,
+TCID-155,FE,cart_page,"Verify the cart subtotals section has ""Shipping"" label",,
+TCID-156,FE,cart_page,"Verify ""Flat rate"" shipping option radio is visible with correct price ",,
+TCID-157,FE,cart_page,Verify shipping options are not displayed when only digital item in cart,"Add a digital item to cart.
+Verify there are no shipping options available",
+TCID-158,FE,cart_page,"Verity the cart subtotals section has ""Total"" label",,
+TCID-159,FE,cart_page,Verity the cart sutbotal section has correct Total value when there is 1 item in cart,,
+TCID-160,FE,cart_page,Verity the cart sutbotal section has correct Total value when there are 2 items in cart,,
+TCID-161,FE,cart_page,"Verity the ""Proceed to checkout"" button is displayed with correct label",,
+TCID-162,FE,cart_page,"Verify ""Free Shipping"" option is dispalyed when total price is above 50","The site offers free shipping when to total price is over 50.
+Add few products or multiple quanity of same products to make the total amount over 50.
+Verify the free shipping options apears.",
+TCID-163,FE,cart_page,"Verity ""Free Shipping"" option disapears when total amount decreases to below 50","Add over $50 worth products to cart. Veriyf the free shpping option is displayed.
+Remove items to make total price under $50. 
+Verity the Free shipping disapeares.",
+TCID-164,FE,cart_page,"Verify the cart subtotals section has ""Shipping to XX"" text",Use regex to match the XX which is a state name.,
+TCID-165,FE,cart_page,"Verify the cart subtotals section has ""Change address"" link",,
+TCID-166,FE,cart_page,"Verify clicking the ""Change address"" in cart subtotals opens up a form",,
+TCID-167,FE,cart_page,Veirfy filling in and submitting the change address form updates the shiping to message,"Fill all the fields with other information and save.
+Verify the message changes",
+TCID-168,FE,cart_page,Verify only selecting State  in the change address form works,The defaualt country should be United States. Change the state and verify you can save it.,
+TCID-169,FE,cart_page,Verify the quantity of a product can be changed by inputing into the field,,
+TCID-170,FE,cart_page,Verify the quantity of a product can be changed by clicking the arrow,,
+TCID-6,FE,my_account_page_signed_out,My Account page should have login form,,
+TCID-7,FE,my_account_page_signed_out,My Account page should have registration form,,
+TCID-8,FE,my_account_page_signed_out,Login username field label should be correct,,
+TCID-9,FE,my_account_page_signed_out,Login password field label should be correct,,
+TCID-10,FE,my_account_page_signed_out,Existing user should be able to login,,
+TCID-11,FE,my_account_page_signed_out,User with wrong password should get correct error message,,
+TCID-14,FE,my_account_page_signed_out,User should get automaticaly logged when registering,,
+TCID-15,FE,my_account_page_signed_out,Register user name field label should be correct,,
+TCID-16,FE,my_account_page_signed_in,When user logges in 'Dashboard' should be active,,
+TCID-17,FE,my_account_page_signed_in,Left nav bar should have 6 elements,,
+TCID-18,FE,my_account_page_signed_in,"Left nav bar should have """" displayed",,
+TCID-19,FE,my_account_page_signed_in,"Left nav bar should have """" displayed",,
+TCID-20,FE,my_account_page_signed_in,Left nav '' click should open ....,,
+TCID-21,FE,my_account_page_signed_in,Left nav '' click should open ....,,
+TCID-22,FE,my_account_page_signed_in,Left nav '' click should open ....,,
+TCID-23,FE,my_account_page_signed_in,Left nav '' click should open ....,,
+TCID-34,FE,end-to-end-fe,New user place order with 1 item and register at checkout,,
+TCID-79,FE,end-to-end-fe,Place order for variable product as guest user,,
+TCID-77,FE,chekcout,chekcout with different deliver address (verify form shows up when radio is selected),,
+TCID-78,FE,chekcout,verify addreses are populated for existing user,,
+TCID-123,FE,breadcrumb,"Verify breadcrmb is displayed on the ""Cart"" page",,
+TCID-124,FE,breadcrumb,"Verify clicing the ""Home"" link on the breadcrumb of ""Cart"" page navigates to home page",,
+TCID-125,FE,breadcrumb,"Verify breadcrmb is displayed on the ""My account"" page",,
+TCID-126,FE,breadcrumb,"Verify clicing the ""Home"" link on the breadcrumb of ""My account"" page navigates to home page",,
+TCID-127,FE,breadcrumb,"Verify breadcrmb is displayed on the ""Checkout"" page","For this to work there must be an item in the cart. 
+Add item to cart and go to checkout page.",
+TCID-128,FE,breadcrumb,"Verify clicing the ""Home"" link on the breadcrumb of ""Checkout"" page navigates to home page",,
