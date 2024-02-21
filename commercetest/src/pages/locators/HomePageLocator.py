@@ -6,3 +6,5 @@ class HomePageLocator():
     DISPLAYED_PRODUCTS = (By.CSS_SELECTOR, 'li.product')
 
     MAIN_HEADER = (By.ID, "masthead")
+
+    HEADER_MENU = (By.CSS_SELECTOR, "div.menu")

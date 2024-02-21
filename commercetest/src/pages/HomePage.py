@@ -22,4 +22,6 @@ class HomePage(HomePageLocator):
     
     def verify_header_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.MAIN_HEADER)
-    
+
+    def verify_header_menu_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.HEADER_MENU)

@@ -20,3 +20,9 @@ class TestVerifyContentsDisplayed:
         home_p = HomePage(self.driver)
         home_p.go_to_homepage()
         home_p.verify_header_is_displayed()
+
+    @pytest.mark.tcid68
+    def test_verify_header_menu_is_displayed(self):
+        home_p = HomePage(self.driver)
+        home_p.go_to_homepage()
+        home_p.verify_header_menu_is_displayed()
