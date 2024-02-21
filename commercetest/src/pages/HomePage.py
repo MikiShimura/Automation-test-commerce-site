@@ -20,3 +20,6 @@ class HomePage(HomePageLocator):
         number_of_products = len(displayed_products)
         return number_of_products
     
+    def verify_header_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.MAIN_HEADER)
+    

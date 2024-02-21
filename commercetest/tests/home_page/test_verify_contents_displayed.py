@@ -11,8 +11,12 @@ class TestVerifyContentsDisplayed:
         home_p = HomePage(self.driver)
         home_p.go_to_homepage()
 
-        # check the number of displayed products
         number_of_products = home_p.get_number_of_displayed_products()
         print(number_of_products)
         assert number_of_products==16, f"{number_of_products} products are displayed, not as expeced 16."
-        # verify the number is 16
+
+    @pytest.mark.tcid67
+    def test_verify_header_is_displayed(self):
+        home_p = HomePage(self.driver)
+        home_p.go_to_homepage()
+        home_p.verify_header_is_displayed()
