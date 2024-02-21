@@ -14,5 +14,9 @@ class HomePage(HomePageLocator):
 
     def click_first_add_to_cart_button(self):
         self.sl.wait_and_click(self.ADD_TO_CART_BUTTON)
-
+    
+    def get_number_of_displayed_products(self):
+        displayed_products = self.sl.wait_and_get_elements(self.DISPLAYED_PRODUCTS)
+        number_of_products = len(displayed_products)
+        return number_of_products
     
