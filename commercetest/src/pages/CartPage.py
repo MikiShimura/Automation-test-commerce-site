@@ -1,10 +1,9 @@
 from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.pages.locators.CartPageLocator import CartPageLocator
-from commercetest.src.pages.locators.ComponentBannerLocator import ComponentBannerLocator
 from commercetest.src.helpers.config_helpers import get_base_url
 import logging as logger
 
-class CartPage(CartPageLocator, ComponentBannerLocator):
+class CartPage(CartPageLocator):
 
     endpoint = "/cart/"
 
@@ -41,6 +40,3 @@ class CartPage(CartPageLocator, ComponentBannerLocator):
     
     def click_on_proceed_to_checkout(self):
         self.sl.wait_and_click(self.PROCEED_TO_CHECKOUT_BTN)
-
-    def verify_free_shipping_banner_is_displayed(self):
-        self.sl.wait_until_element_is_visible(self.FREE_SHIPPING_BANNER)

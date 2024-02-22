@@ -1,9 +1,8 @@
 from commercetest.src.helpers.config_helpers import get_base_url
 from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.pages.locators.HomePageLocator import HomePageLocator
-from commercetest.src.pages.locators.ComponentBannerLocator import ComponentBannerLocator
 
-class HomePage(HomePageLocator, ComponentBannerLocator):
+class HomePage(HomePageLocator):
 
     def __init__(self, driver):
         self.driver = driver
@@ -27,5 +26,3 @@ class HomePage(HomePageLocator, ComponentBannerLocator):
     def verify_header_menu_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.HEADER_MENU)
     
-    def verify_free_shipping_banner_is_displayed(self):
-        self.sl.wait_until_element_is_visible(self.FREE_SHIPPING_BANNER)
