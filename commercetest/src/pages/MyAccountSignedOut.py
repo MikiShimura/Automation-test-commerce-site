@@ -1,9 +1,10 @@
 from commercetest.src.pages.locators.MyAccountSignedOutLocator import MyAccountSignedOutLocator
+from commercetest.src.pages.locators.ComponentBannerLocator import ComponentBannerLocator
 from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.helpers.config_helpers import get_base_url
 import logging as logger
 
-class MyAccountSignedOut(MyAccountSignedOutLocator):
+class MyAccountSignedOut(ComponentBannerLocator):
 
     endpoint = "/my-account/"
 
@@ -39,3 +40,6 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
     def click_register_button(self):
         logger.debug("Clicking 'Register' button")
         self.sl.wait_and_click(self.REGISTER_BTN)
+
+    def verify_free_shipping_banner_is_not_displayed(self):
+        self.sl.wait_until_element_is_invisible(self.FREE_SHIPPING_BANNER)

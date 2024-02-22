@@ -1,8 +1,9 @@
 from commercetest.src.pages.locators.CheckoutPageLocator import CheckoutPageLocator
+from commercetest.src.pages.locators.ComponentBannerLocator import ComponentBannerLocator
 from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.helpers.generic_helpers import generate_random_email_and_password
 
-class CheckoutPage(CheckoutPageLocator):
+class CheckoutPage(CheckoutPageLocator, ComponentBannerLocator):
 
     def __init__(self, driver):
         self.driver = driver
@@ -57,3 +58,6 @@ class CheckoutPage(CheckoutPageLocator):
 
     def click_place_order(self):
         self.sl.wait_and_click(self.PLACE_ORDER_BTN)
+
+    def verify_free_shipping_banner_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.FREE_SHIPPING_BANNER)

@@ -39,6 +39,11 @@ class SeleniumExtended():
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located(locator))
         
+    def wait_until_element_is_invisible(self, locator, timeout=None):
+        timeout = timeout if timeout else self.default_timeout
+        WebDriverWait(self.driver, timeout).until(
+            EC.invisibility_of_element_located(locator))
+        
     def wait_and_get_elements(self, locator, timeout=None, err=None):
         timeout = timeout if timeout else self.default_timeout
         err = err if err else f"Unable to find elements located by '{locator}'"
