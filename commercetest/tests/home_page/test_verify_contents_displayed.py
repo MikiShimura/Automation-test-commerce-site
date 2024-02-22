@@ -3,7 +3,7 @@ from commercetest.src.pages.HomePage import HomePage
 
 @pytest.mark.usefixtures("init_driver")
 
-class TestVerifyContentsDisplayed:
+class TestVerifyContentsDisplayedOnHomePage:
 
     @pytest.mark.smoke
     @pytest.mark.tcid1

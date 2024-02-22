@@ -1,5 +1,5 @@
 Test Case Id,FE_OR_BE,Tested-Item,Test Case Name,Description,CODE-PROVIDED
-TCID-1,FE,home_page,Verify number of products displayed,,TRUE
+TCID-1,FE,home_page,Verify number of pr~oducts displayed,,TRUE
 TCID-67,FE,home_page,Verify the heading is displayed on the home page,,TRUE
 TCID-68,FE,home_page,Verify header menu is displayed,,TRUE
 TCID-12,FE,my_account_page_signed_out,User with none-existing email should get correct error message,,TRUE
