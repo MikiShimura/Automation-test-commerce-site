@@ -63,3 +63,10 @@ class SeleniumExtended():
                 EC.visibility_of_element_located(locator))
         element_text = elm.text
         return element_text
+    
+    def wait_and_get_link_url_pathname(self, locator, timeout=None):
+        timeout = timeout if timeout else self.default_timeout
+        elm = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located(locator))
+        element_pathname = elm.get_attribute("pathname")
+        return element_pathname

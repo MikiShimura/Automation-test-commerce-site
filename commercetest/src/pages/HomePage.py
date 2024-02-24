@@ -34,3 +34,19 @@ class HomePage(HomePageLocator):
     
     def verify_sorting_dropdown_is_displayed_on_bottom(self):
         self.sl.wait_until_element_is_visible(self.SORTING_DROPDOWN_BOTTOM)
+
+    def verify_top_nav_correct_items_are_displayed(self):
+        # home_text = self.sl.wait_and_get_text(self.NAV_HOME)
+        locators_list = [self.NAV_HOME, self.NAV_CART, self.NAV_CHECKOUT, self.NAV_MY_ACCOUNT, self.NAV_SAMPLE]
+        items_list = []
+        for locator in locators_list: 
+            items_list.append(self.sl.wait_and_get_text(locator))
+        return items_list
+    
+    def test_verify_top_nav_items_leads_correct_url(self):
+        locators_list = [self.NAV_HOME, self.NAV_CART, self.NAV_CHECKOUT, self.NAV_MY_ACCOUNT, self.NAV_SAMPLE]
+        url_pathname_list = []
+        for locator in locators_list: 
+            url_pathname_list.append(self.sl.wait_and_get_link_url_pathname(locator))
+        return url_pathname_list
+        

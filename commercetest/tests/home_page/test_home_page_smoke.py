@@ -41,3 +41,15 @@ class TestHomePageSmoke:
     @pytest.mark.tcid68
     def test_verify_header_menu_is_displayed(self, setup):
         self.homepage.verify_header_menu_is_displayed()
+
+    @pytest.mark.tcid73
+    def test_verify_top_nav_correct_items_are_displayed(self, setup):
+        nav_items_list = self.homepage.verify_top_nav_correct_items_are_displayed()
+        expected_list = ['Home', 'Cart', 'Checkout', 'My account', 'Sample Page']
+        assert nav_items_list==expected_list, "At least 1 unexpected item is displayed on nav menu." 
+
+    @pytest.mark.tcid74
+    def test_verify_top_nav_items_leads_correct_url(self, setup):
+        nav_items_link_pathname_list = self.homepage.test_verify_top_nav_items_leads_correct_url()
+        expected_list = ['/', '/cart/', '/checkout/', '/my-account/', '/sample-page/']
+        assert nav_items_link_pathname_list==expected_list, "At least 1 item on nav menu leads to wrong page." 
