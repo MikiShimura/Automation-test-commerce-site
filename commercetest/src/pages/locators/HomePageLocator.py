@@ -7,4 +7,9 @@ class HomePageLocator():
 
     MAIN_HEADER = (By.ID, "masthead")
 
+    SHOP_HEADER = (By.CSS_SELECTOR, "header.woocommerce-products-header")
+
     HEADER_MENU = (By.CSS_SELECTOR, "div.menu")
+
+    SORTING_DROPDOWN_TOP = (By.XPATH, '//*[@id="main"]/div[1]')
+    SORTING_DROPDOWN_BOTTOM = (By.XPATH, '//*[@id="main"]/div[2]')

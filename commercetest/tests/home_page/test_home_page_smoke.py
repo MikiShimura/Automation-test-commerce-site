@@ -22,6 +22,18 @@ class TestHomePageSmoke:
         f"Unexpected number of products displayed on home page. " \
         f"Expected: {expected_number_of_products}, Actual: {number_of_products}"
 
+    @pytest.mark.tcid4
+    def test_verify_shop_header_is_displayed(self,setup):
+        self.homepage.verify_shop_header_is_displayed()
+
+    @pytest.mark.tcid5
+    def test_verify_sorting_dropdown_is_displayed_on_top(self,setup):
+        self.homepage.verify_sorting_dropdown_is_displayed_on_top()
+
+    @pytest.mark.tcid35
+    def test_verify_sorting_dropdown_is_displayed_on_bottom(self,setup):
+        self.homepage.verify_sorting_dropdown_is_displayed_on_bottom()
+
     @pytest.mark.tcid67
     def test_verify_header_is_displayed(self, setup):
         self.homepage.verify_header_is_displayed()
