@@ -9,3 +9,5 @@ class CartPageLocator():
 
     PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, "a.checkout-button")
 
+    ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")
+

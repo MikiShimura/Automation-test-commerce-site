@@ -28,7 +28,7 @@ class CartPage(CartPageLocator):
     def click_apply_coupon(self):
         self.sl.wait_and_click(self.APPLY_COUPON_BTN)
 
-    def apply_coupon(self, coupon_code):
+    def apply_available_coupon(self, coupon_code):
         self.input_coupon(coupon_code)
         self.click_apply_coupon()
         expected_text = self.get_displayed_message()
@@ -38,5 +38,12 @@ class CartPage(CartPageLocator):
         text = self.sl.wait_and_get_text(self.CART_PAGE_MESSAGE)
         return text
     
+    def apply_expired_coupon(self, coupon_code):
+        self.input_coupon(coupon_code)
+        self.click_apply_coupon()
+            
     def click_on_proceed_to_checkout(self):
         self.sl.wait_and_click(self.PROCEED_TO_CHECKOUT_BTN)
+    
+    def wait_until_error_is_displayed(self, exp_err):
+        self.sl.wait_until_element_contains_text(self.ERRORS_UL, exp_err)

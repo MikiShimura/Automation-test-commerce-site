@@ -32,7 +32,7 @@ class TestEndToEndCheckoutGuestUser:
 
         # apply free coupon
         coupon_code = GenericConfigs.FREE_COUPON
-        cart_p.apply_coupon(coupon_code)
+        cart_p.apply_available_coupon(coupon_code)
 
         cart_p.click_on_proceed_to_checkout()
         checkout_p.fill_in_billing_info()
