@@ -7,7 +7,6 @@ from commercetest.src.configs.generic_configs import GenericConfigs
 @pytest.mark.usefixtures("init_driver")
 class TestCouponNegative:
 
-    @pytest.mark.smoke
     @pytest.mark.tcid66
     def test_apply_expired_coupon(self):
         home_p = HomePage(self.driver)
@@ -20,7 +19,7 @@ class TestCouponNegative:
         header.click_on_cart_on_right_header()
 
         coupon_code = GenericConfigs.EXPIRED_COUPON
-        cart_p.apply_expired_coupon(coupon_code)
+        cart_p.apply_coupon(coupon_code, expected_success=False)
 
         expected_err = f'Coupon "{coupon_code}" does not exist!'
         cart_p.wait_until_error_is_displayed(expected_err)
