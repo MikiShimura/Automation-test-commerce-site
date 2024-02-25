@@ -45,8 +45,8 @@ class HomePage(HomePageLocator):
     
     def test_verify_top_nav_items_leads_correct_url(self):
         locators_list = [self.NAV_HOME, self.NAV_CART, self.NAV_CHECKOUT, self.NAV_MY_ACCOUNT, self.NAV_SAMPLE]
-        url_pathname_list = []
+        url_list = []
         for locator in locators_list: 
-            url_pathname_list.append(self.sl.wait_and_get_link_url_pathname(locator))
-        return url_pathname_list
+            url_list.append(self.sl.wait_and_get_link_url(locator))
+        return url_list
         

@@ -1,5 +1,6 @@
 import pytest
 from commercetest.src.pages.HomePage import HomePage
+from commercetest.src.helpers.config_helpers import get_base_url
 
 @pytest.mark.usefixtures("init_driver")
 class TestHomePageSmoke:
@@ -50,6 +51,14 @@ class TestHomePageSmoke:
 
     @pytest.mark.tcid74
     def test_verify_top_nav_items_leads_correct_url(self, setup):
-        nav_items_link_pathname_list = self.homepage.test_verify_top_nav_items_leads_correct_url()
-        expected_list = ['/', '/cart/', '/checkout/', '/my-account/', '/sample-page/']
-        assert nav_items_link_pathname_list==expected_list, "At least 1 item on nav menu leads to wrong page." 
+        nav_items_link_url_list = self.homepage.test_verify_top_nav_items_leads_correct_url()
+        
+        base_url = get_base_url()
+        expected_path_list = ['/', '/cart/', '/checkout/', '/my-account/', '/sample-page/']
+        expected_url_list = []
+        for path in expected_path_list:
+            expected_url_list.append(base_url + path)
+        
+        # print(expected_path_list)
+        # print(expected_url_list)
+        assert nav_items_link_url_list==expected_url_list, "At least 1 item on nav menu leads to wrong page." 
