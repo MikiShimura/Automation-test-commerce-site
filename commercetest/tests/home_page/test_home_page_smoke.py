@@ -1,6 +1,7 @@
 import pytest
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.helpers.config_helpers import get_base_url
+from commercetest.src.configs.generic_configs import GenericConfigs
 
 @pytest.mark.usefixtures("init_driver")
 class TestHomePageSmoke:
@@ -18,7 +19,7 @@ class TestHomePageSmoke:
     def test_verify_number_of_products(self,setup):
 
         number_of_products = self.homepage.get_number_of_displayed_products()
-        expected_number_of_products = 16
+        expected_number_of_products = GenericConfigs.NUMBER_OF_DISPLAYED_PRODUCTS_HOME_PAGE
         assert number_of_products==expected_number_of_products, \
         f"Unexpected number of products displayed on home page. " \
         f"Expected: {expected_number_of_products}, Actual: {number_of_products}"

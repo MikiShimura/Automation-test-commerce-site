@@ -1,3 +1,4 @@
 class GenericConfigs:
     FREE_COUPON = "ssqa100"
     EXPIRED_COUPON = "expire50"
+    NUMBER_OF_DISPLAYED_PRODUCTS_HOME_PAGE = 16

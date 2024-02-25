@@ -50,3 +50,5 @@ class HomePage(HomePageLocator):
             url_list.append(self.sl.wait_and_get_link_url(locator))
         return url_list
         
+    def verify_clicking_product_open_correct_page(self):
+        self.sl.wait_and_click(self.VARIABLE_PRODUCTS)
