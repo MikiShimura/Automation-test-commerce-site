@@ -18,7 +18,7 @@ class TestVerifyProductsDisplayedContents:
     @pytest.mark.tcid103
     def test_verify_clicking_product_open_correct_page(self, setup):
         # click variable product
-        self.homepage.verify_clicking_product_open_correct_page()
+        self.homepage.clicking_variabla_product_page()
         current_url = self.driver.current_url
         
         product_name = self.product_p.get_product_name()
@@ -26,3 +26,31 @@ class TestVerifyProductsDisplayedContents:
         expected_url = f"{get_base_url()}/product/{product_name_url}/"
  
         assert current_url==expected_url, "Cliking product open wrong page." 
+
+    @pytest.mark.tcid104
+    def test_verify_each_product_displays_name_under_image(self, setup):
+        # click one (variable) product
+        self.homepage.clicking_variable_product_page()
+
+        # Verify string as product name is displayed
+        product_name = self.product_p.get_product_name()
+        assert type(product_name) == str,  "Displayed product name should be string."
+
+        # Verify product name is displayed under image
+        img_location = self.product_p.get_product_img_location()
+        name_location = self.product_p.get_product_name_location()
+        assert img_location['y'] < name_location['y'], "Product name should be displayed under image"
+    
+        # what about loop??
+
+    @pytest.mark.tcid105
+    def test_verify_each_product_displays_price_under_product_name(self, setup):
+        # click one (variable) product
+        self.homepage.clicking_variable_product_page()
+
+        # Verify price is displayed under product name
+        name_location = self.product_p.get_product_name_location()
+        price_location = self.product_p.get_product_price_location()
+        assert name_location['y'] < price_location['y'], "Price should be displayed under product name"
+
+        # what about loop??

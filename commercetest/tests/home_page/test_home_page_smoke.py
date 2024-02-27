@@ -52,7 +52,7 @@ class TestHomePageSmoke:
 
     @pytest.mark.tcid74
     def test_verify_top_nav_items_leads_correct_url(self, setup):
-        nav_items_link_url_list = self.homepage.test_verify_top_nav_items_leads_correct_url()
+        nav_items_link_url_list = self.homepage.verify_top_nav_items_lead_correct_url()
         
         base_url = get_base_url()
         expected_path_list = ['/', '/cart/', '/checkout/', '/my-account/', '/sample-page/']

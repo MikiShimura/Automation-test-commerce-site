@@ -43,6 +43,13 @@ class SeleniumExtended():
         timeout = timeout if timeout else self.default_timeout
         WebDriverWait(self.driver, timeout).until(
             EC.invisibility_of_element_located(locator))
+    
+    def wait_and_get_element(self, locator, timeout=None, err=None):
+        timeout = timeout if timeout else self.default_timeout
+        elements = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located(locator))
+        
+        return elements
         
     def wait_and_get_elements(self, locator, timeout=None, err=None):
         timeout = timeout if timeout else self.default_timeout
