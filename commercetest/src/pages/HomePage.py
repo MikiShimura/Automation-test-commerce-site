@@ -55,7 +55,16 @@ class HomePage(HomePageLocator):
 
     def clicking_one_product_page(self):
         self.sl.wait_and_click(self.VARIABLE_PRODUCTS)
-
+    
+    def get_all_products(self):
+        return self.sl.wait_and_get_elements(self.ALL_PRODUCTS)
+    
+    def get_simple_products(self):
+        return self.sl.wait_and_get_elements(self.SIMPLE_PRODUCTS)
+    
+    def get_variable_products(self):
+        return self.sl.wait_and_get_elements(self.VARIABLE_PRODUCTS)
+    
     def get_products_on_sale(self):
         return self.sl.wait_and_get_elements(self.PRODUCTS_ON_SALE)
     

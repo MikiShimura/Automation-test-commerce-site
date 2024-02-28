@@ -27,5 +27,8 @@ class HomePageLocator():
     PRODUCT_1 = (By.XPATH, f'//*[@id="main"]/ul/li[1]')
     PRODUCT_2 = (By.XPATH, f'//*[@id="main"]/ul/li[2]')
 
+    ALL_PRODUCTS = (By.CSS_SELECTOR, "li.product")
+    SIMPLE_PRODUCTS = (By.CSS_SELECTOR, "li.product.product-type-simple")
+    VARIABLE_PRODUCTS = (By.CSS_SELECTOR, "li.product.product-type-variable")
     PRODUCTS_ON_SALE = (By.CSS_SELECTOR, "li.product.sale")
     SALE_BADGE = (By.CSS_SELECTOR, "span.onsale")

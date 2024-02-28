@@ -1,4 +1,5 @@
 import pytest
+from selenium.webdriver.common.by import By
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.pages.ProductDetailedPage import ProductDetailedPage
 from commercetest.src.helpers.config_helpers import get_base_url
@@ -63,8 +64,19 @@ class TestVerifyProductsDisplayedContents:
 
         for n in range(len(products_on_sale)):
             # verify sale badge(SALE!) is displayed
-            products_on_sale[n].text.index("SALE!")
-        
-        
+            products_on_sale[n].find_element(By.CLASS_NAME,"onsale")
+
+    @pytest.mark.tcid107
+    def test_verify_add_cart_or_select_option_button_is_displayed_on_each_product(self, setup):
+        # get simple and variable products
+        simple_products = self.homepage.get_simple_products()
+        variable_products = self.homepage.get_variable_products()
+
+        # loop to check the button text
+        for n in range(len(simple_products)):
+            simple_products[n].find_element(By.CLASS_NAME,"add_to_cart_button").text == "Add to cart"
+        for n in range(len(variable_products)):
+            variable_products[n].find_element(By.CLASS_NAME,"add_to_cart_button").text == "Select options"
+
 
         
