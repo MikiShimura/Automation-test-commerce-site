@@ -55,4 +55,9 @@ class HomePage(HomePageLocator):
 
     def clicking_one_product_page(self):
         self.sl.wait_and_click(self.VARIABLE_PRODUCTS)
+
+    def get_products_on_sale(self):
+        return self.sl.wait_and_get_elements(self.PRODUCTS_ON_SALE)
     
+    def verify_sale_badge_is_displayed_on_sale_product(self):
+        self.sl.wait_until_element_is_visible(self.SALE_BADGE)

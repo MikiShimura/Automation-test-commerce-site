@@ -54,3 +54,17 @@ class TestVerifyProductsDisplayedContents:
         assert name_location['y'] < price_location['y'], "Price should be displayed under product name"
 
         # what about loop??
+
+    @pytest.mark.tcid106
+    def test_verify_sale_badge_is_displayed_on_sale_product(self, setup):
+        # search sale products
+        products_on_sale = self.homepage.get_products_on_sale()
+        # print(range(len(products_on_sale)))
+
+        for n in range(len(products_on_sale)):
+            # verify sale badge(SALE!) is displayed
+            products_on_sale[n].text.index("SALE!")
+        
+        
+
+        
