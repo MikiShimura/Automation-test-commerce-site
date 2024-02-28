@@ -3,7 +3,10 @@ from commercetest.src.configs.generic_configs import GenericConfigs
 import random
 
 class HomePageLocator():
-    ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, 'a.add_to_cart_button')
+    PRODUCT_TITLE_HOME = (By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+    PRODUCT_IMG_HOME = (By.CSS_SELECTOR, 'img.attachment-woocommerce_thumbnail')
+    PRODUCT_PRICE_HOME = (By.CSS_SELECTOR, 'span.price')
+    ADD_TO_CART_BUTTON_HOME = (By.CSS_SELECTOR, 'a.add_to_cart_button')
 
     DISPLAYED_PRODUCTS = (By.CSS_SELECTOR, 'li.product')
 

@@ -30,31 +30,35 @@ class TestVerifyProductsDisplayedContents:
 
     @pytest.mark.tcid104
     def test_verify_each_product_displays_name_under_image(self, setup):
-        # click one (variable) product
-        self.homepage.clicking_variable_product_page()
+        # get all products
+        all_products = self.homepage.get_all_products()
+        
+        for n in range(len(all_products)):
+            # Verify string as product name is displayed
+            product_name = all_products[n].find_element(By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+            product_name_text = product_name.text
+            assert type(product_name_text) == str,  "Displayed product name should be string."
 
-        # Verify string as product name is displayed
-        product_name = self.product_p.get_product_name()
-        assert type(product_name) == str,  "Displayed product name should be string."
-
-        # Verify product name is displayed under image
-        img_location = self.product_p.get_product_img_location()
-        name_location = self.product_p.get_product_name_location()
-        assert img_location['y'] < name_location['y'], "Product name should be displayed under image"
-    
-        # what about loop??
+            # Verify product name is displayed under image
+            product_name_location = product_name.location
+            product_img = all_products[n].find_element(By.CSS_SELECTOR, 'img.attachment-woocommerce_thumbnail')
+            product_img_location = product_img.location
+            
+            assert product_img_location['y'] < product_name_location['y'], "Product name should be displayed under image"
 
     @pytest.mark.tcid105
     def test_verify_each_product_displays_price_under_product_name(self, setup):
-        # click one (variable) product
-        self.homepage.clicking_variable_product_page()
+        # get all products
+        all_products = self.homepage.get_all_products()
 
-        # Verify price is displayed under product name
-        name_location = self.product_p.get_product_name_location()
-        price_location = self.product_p.get_product_price_location()
-        assert name_location['y'] < price_location['y'], "Price should be displayed under product name"
-
-        # what about loop??
+        for n in range(len(all_products)):
+            # Verify price is displayed under product name
+            product_name = all_products[n].find_element(By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+            product_name_location = product_name.location
+            product_price = all_products[n].find_element(By.CSS_SELECTOR, 'span.price')
+            product_price_location = product_price.location
+            
+            assert product_name_location['y'] < product_price_location['y'], "Product name should be displayed under image"
 
     @pytest.mark.tcid106
     def test_verify_sale_badge_is_displayed_on_sale_product(self, setup):
@@ -64,7 +68,7 @@ class TestVerifyProductsDisplayedContents:
 
         for n in range(len(products_on_sale)):
             # verify sale badge(SALE!) is displayed
-            products_on_sale[n].find_element(By.CLASS_NAME,"onsale")
+            products_on_sale[n].find_element(By.CSS_SELECTOR, "span.onsale")
 
     @pytest.mark.tcid107
     def test_verify_add_cart_or_select_option_button_is_displayed_on_each_product(self, setup):
@@ -74,9 +78,9 @@ class TestVerifyProductsDisplayedContents:
 
         # loop to check the button text
         for n in range(len(simple_products)):
-            simple_products[n].find_element(By.CLASS_NAME,"add_to_cart_button").text == "Add to cart"
+            simple_products[n].find_element(By.CSS_SELECTOR, 'a.add_to_cart_button').text == "Add to cart"
         for n in range(len(variable_products)):
-            variable_products[n].find_element(By.CLASS_NAME,"add_to_cart_button").text == "Select options"
+            variable_products[n].find_element(By.CSS_SELECTOR, 'a.add_to_cart_button').text == "Select options"
 
 
         

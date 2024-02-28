@@ -13,7 +13,7 @@ class HomePage(HomePageLocator):
         self.driver.get(home_url)
 
     def click_first_add_to_cart_button(self):
-        self.sl.wait_and_click(self.ADD_TO_CART_BUTTON)
+        self.sl.wait_and_click(self.ADD_TO_CART_BUTTON_HOME)
     
     def get_number_of_displayed_products(self):
         displayed_products = self.sl.wait_and_get_elements(self.DISPLAYED_PRODUCTS)
@@ -68,5 +68,5 @@ class HomePage(HomePageLocator):
     def get_products_on_sale(self):
         return self.sl.wait_and_get_elements(self.PRODUCTS_ON_SALE)
     
-    def verify_sale_badge_is_displayed_on_sale_product(self):
-        self.sl.wait_until_element_is_visible(self.SALE_BADGE)
+    def get_product_name(self):
+        return self.sl.wait_and_get_text(self.PRODUCT_TITLE_HOME)
