@@ -79,9 +79,18 @@ class TestVerifyProductsDisplayedContents:
         # loop to check the button text
         for n in range(len(simple_products)):
             add_to_cart_button = self.homepage.verify_add_to_cart_button_is_displayed(simple_products[n])
-            add_to_cart_button.text  == "Add to cart"
+            expected_text = "Add to cart"
+            assert add_to_cart_button.text  == expected_text, f"The text on add to cart button should be {expected_text}"
         for n in range(len(variable_products)):
             add_to_cart_button = self.homepage.verify_add_to_cart_button_is_displayed(variable_products[n])
-            add_to_cart_button.text  == "Add to cart"
+            expected_text = "Select options"
+            assert add_to_cart_button.text  == expected_text, f"The text on add to cart button should be {expected_text}"
 
+    @pytest.mark.tcid108
+    def test_verify_select_option_button_is_displayed_on_variable_product(self, setup):
+        variable_products = self.homepage.get_variable_products()
+        for n in range(len(variable_products)):
+            add_to_cart_button = self.homepage.verify_add_to_cart_button_is_displayed(variable_products[n])
+            expected_text = "Select options"
+            assert add_to_cart_button.text  == expected_text, f"The text on add to cart button should be {expected_text}"
         
