@@ -35,13 +35,13 @@ class TestVerifyProductsDisplayedContents:
         
         for n in range(len(all_products)):
             # Verify string as product name is displayed
-            product_name = all_products[n].find_element(By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+            product_name = self.homepage.get_displayed_product_name(all_products[n])
             product_name_text = product_name.text
             assert type(product_name_text) == str,  "Displayed product name should be string."
 
             # Verify product name is displayed under image
             product_name_location = product_name.location
-            product_img = all_products[n].find_element(By.CSS_SELECTOR, 'img.attachment-woocommerce_thumbnail')
+            product_img = self.homepage.get_displayed_product_img(all_products[n])
             product_img_location = product_img.location
             
             assert product_img_location['y'] < product_name_location['y'], "Product name should be displayed under image"
@@ -53,9 +53,9 @@ class TestVerifyProductsDisplayedContents:
 
         for n in range(len(all_products)):
             # Verify price is displayed under product name
-            product_name = all_products[n].find_element(By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+            product_name = self.homepage.get_displayed_product_name(all_products[n])
             product_name_location = product_name.location
-            product_price = all_products[n].find_element(By.CSS_SELECTOR, 'span.price')
+            product_price = self.homepage.get_displayed_product_price(all_products[n])
             product_price_location = product_price.location
             
             assert product_name_location['y'] < product_price_location['y'], "Product name should be displayed under image"
@@ -64,11 +64,11 @@ class TestVerifyProductsDisplayedContents:
     def test_verify_sale_badge_is_displayed_on_sale_product(self, setup):
         # search sale products
         products_on_sale = self.homepage.get_products_on_sale()
-        # print(range(len(products_on_sale)))
 
         for n in range(len(products_on_sale)):
             # verify sale badge(SALE!) is displayed
-            products_on_sale[n].find_element(By.CSS_SELECTOR, "span.onsale")
+            self.homepage.verify_sale_badge_is_displayed(products_on_sale[n])
+            
 
     @pytest.mark.tcid107
     def test_verify_add_cart_or_select_option_button_is_displayed_on_each_product(self, setup):
@@ -78,9 +78,10 @@ class TestVerifyProductsDisplayedContents:
 
         # loop to check the button text
         for n in range(len(simple_products)):
-            simple_products[n].find_element(By.CSS_SELECTOR, 'a.add_to_cart_button').text == "Add to cart"
+            add_to_cart_button = self.homepage.verify_add_to_cart_button_is_displayed(simple_products[n])
+            add_to_cart_button.text  == "Add to cart"
         for n in range(len(variable_products)):
-            variable_products[n].find_element(By.CSS_SELECTOR, 'a.add_to_cart_button').text == "Select options"
-
+            add_to_cart_button = self.homepage.verify_add_to_cart_button_is_displayed(variable_products[n])
+            add_to_cart_button.text  == "Add to cart"
 
         

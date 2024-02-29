@@ -1,6 +1,7 @@
 from commercetest.src.helpers.config_helpers import get_base_url
 from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.pages.locators.HomePageLocator import HomePageLocator
+from selenium.webdriver.common.by import By
 
 class HomePage(HomePageLocator):
 
@@ -68,5 +69,18 @@ class HomePage(HomePageLocator):
     def get_products_on_sale(self):
         return self.sl.wait_and_get_elements(self.PRODUCTS_ON_SALE)
     
-    def get_product_name(self):
-        return self.sl.wait_and_get_text(self.PRODUCT_TITLE_HOME)
+    def get_displayed_product_name(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, 'h2.woocommerce-loop-product__title')
+        
+    def get_displayed_product_img(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, 'img.attachment-woocommerce_thumbnail')
+    
+    def get_displayed_product_price(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, 'span.price')
+    
+    def verify_sale_badge_is_displayed(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, "span.onsale")
+        # parent.find_element(self.SALE_BADGE)
+
+    def verify_add_to_cart_button_is_displayed(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
