@@ -1,6 +1,7 @@
 import random
 import string
 import logging as logger
+from commercetest.src.helpers.config_helpers import get_base_url
 
 def generate_random_email_and_password(domain=None, email_prefix=None):
     
@@ -20,3 +21,7 @@ def generate_random_email_and_password(domain=None, email_prefix=None):
     rondom_info = {"email": email, "password": random_password}
 
     return rondom_info
+
+def generate_product_page_url_from_product_name(product_name):
+    product_name_url = product_name.lower().replace(" ", "-")
+    return f"{get_base_url()}/product/{product_name_url}/"

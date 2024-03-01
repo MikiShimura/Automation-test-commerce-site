@@ -77,10 +77,14 @@ class HomePage(HomePageLocator):
     
     def get_displayed_product_price(self, parent):
         return parent.find_element(By.CSS_SELECTOR, 'span.price')
-    
+
     def verify_sale_badge_is_displayed(self, parent):
         return parent.find_element(By.CSS_SELECTOR, "span.onsale")
         # parent.find_element(self.SALE_BADGE)
 
     def verify_add_to_cart_button_is_displayed(self, parent):
         return parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
+
+    def click_select_option_button(self, parent):
+        button = parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
+        button.click()
