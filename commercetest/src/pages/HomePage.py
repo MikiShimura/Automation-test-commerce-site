@@ -86,5 +86,13 @@ class HomePage(HomePageLocator):
         return parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
 
     def click_add_to_cart_button(self, parent):
+
         button = parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
         button.click()
+
+    def verify_view_cart_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.VIEW_CART_BUTTON_HOME)
+    
+    def get_displayed_view_cart_button(self):
+        return self.sl.wait_and_get_text(self.VIEW_CART_BUTTON_HOME)
+    

@@ -128,5 +128,17 @@ class TestVerifyProductsDisplayedContents:
 
         all_products_in_cart = cart_p.get_all_product_names_in_cart()
         assert len(all_products_in_cart) == 1, "Only 1 item should be in cart."
+
+    @pytest.mark.tcid111
+    def test_verify_clicking_add_to_cart_button_display_view_cart_button(self, setup):
+        header = Header(self.driver)
+
+        simple_products = self.homepage.get_simple_products()
+        self.homepage.click_add_to_cart_button(simple_products[0])
+
+        header.wait_until_cart_item_count(1)
         
+        self.homepage.verify_view_cart_is_displayed()
         
+        view_cart_button_text = self.homepage.get_displayed_view_cart_button()
+        assert view_cart_button_text == "View cart", "The new displayed button text is wrong"
