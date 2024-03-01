@@ -25,7 +25,7 @@ class HomePageLocator():
     NAV_MY_ACCOUNT = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[4]/a')
     NAV_SAMPLE = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[5]/a')
 
-    VARIABLE_PRODUCTS = (By.XPATH, f'//*[@id="main"]/ul/li[{random.randint(1, GenericConfigs.NUMBER_OF_DISPLAYED_PRODUCTS_HOME_PAGE)}]')
+    RANDOM_PRODUCTS = (By.XPATH, f'//*[@id="main"]/ul/li[{random.randint(1, GenericConfigs.NUMBER_OF_DISPLAYED_PRODUCTS_HOME_PAGE)}]')
     
     PRODUCT_1 = (By.XPATH, f'//*[@id="main"]/ul/li[1]')
     PRODUCT_2 = (By.XPATH, f'//*[@id="main"]/ul/li[2]')

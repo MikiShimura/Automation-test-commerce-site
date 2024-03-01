@@ -1,6 +1,8 @@
 import pytest
 from selenium.webdriver.common.by import By
 from commercetest.src.pages.HomePage import HomePage
+from commercetest.src.pages.CartPage import CartPage
+from commercetest.src.pages.Header import Header
 from commercetest.src.pages.ProductDetailedPage import ProductDetailedPage
 from commercetest.src.configs.generic_configs import GenericConfigs
 from commercetest.src.helpers.generic_helpers import generate_product_page_url_from_product_name
@@ -18,8 +20,8 @@ class TestVerifyProductsDisplayedContents:
     
     @pytest.mark.tcid103
     def test_verify_clicking_product_open_correct_page(self, setup):
-        # click variable product
-        self.homepage.clicking_variable_product_page()
+        # click random product
+        self.homepage.clicking_random_product_page()
         current_url = self.driver.current_url
         
         product_name = self.product_p.get_product_name()
@@ -105,10 +107,26 @@ class TestVerifyProductsDisplayedContents:
             product_name = self.homepage.get_displayed_product_name(variable_products[n]).text
             expected_url = generate_product_page_url_from_product_name(product_name)
             # click the button
-            self.homepage.click_select_option_button(variable_products[n])
+            self.homepage.click_add_to_cart_button(variable_products[n])
             # get current url
             current_url = self.driver.current_url
             # compare these 2 urls
             assert current_url==expected_url, "Cliking button open wrong page." 
 
             self.homepage.go_to_homepage()
+
+    @pytest.mark.tcid110
+    def test_verify_add_to_cart_button_add_to_cart(self, setup):
+        cart_p = CartPage(self.driver)
+        header = Header(self.driver)
+        
+        simple_products = self.homepage.get_simple_products()
+        self.homepage.click_add_to_cart_button(simple_products[0])
+
+        header.wait_until_cart_item_count(1)
+        cart_p.go_to_cart_page()
+
+        all_products_in_cart = cart_p.get_all_product_names_in_cart()
+        assert len(all_products_in_cart) == 1, "Only 1 item should be in cart."
+        
+        

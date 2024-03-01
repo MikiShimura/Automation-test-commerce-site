@@ -51,11 +51,11 @@ class HomePage(HomePageLocator):
             url_list.append(self.sl.wait_and_get_link_url(locator))
         return url_list
         
-    def clicking_variable_product_page(self):
-        self.sl.wait_and_click(self.VARIABLE_PRODUCTS)
+    def clicking_random_product_page(self):
+        self.sl.wait_and_click(self.RANDOM_PRODUCTS)
 
-    def clicking_one_product_page(self):
-        self.sl.wait_and_click(self.VARIABLE_PRODUCTS)
+    def get_random_product(self):
+        return self.sl.wait_and_get_element(self.RANDOM_PRODUCTS)
     
     def get_all_products(self):
         return self.sl.wait_and_get_elements(self.ALL_PRODUCTS)
@@ -85,6 +85,6 @@ class HomePage(HomePageLocator):
     def verify_add_to_cart_button_is_displayed(self, parent):
         return parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
 
-    def click_select_option_button(self, parent):
+    def click_add_to_cart_button(self, parent):
         button = parent.find_element(By.CSS_SELECTOR, 'a.add_to_cart_button')
         button.click()
