@@ -1,5 +1,4 @@
 import pytest
-from selenium.webdriver.common.by import By
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.pages.CartPage import CartPage
 from commercetest.src.pages.Header import Header
@@ -120,9 +119,9 @@ class TestVerifyProductsDisplayedContents:
         cart_p = CartPage(self.driver)
         header = Header(self.driver)
         
-        simple_products = self.homepage.get_simple_products()
-        self.homepage.click_add_to_cart_button(simple_products[0])
-
+        one_simple_product = self.homepage.get_simple_products()[0]
+        self.homepage.click_add_to_cart_button(one_simple_product)
+        
         header.wait_until_cart_item_count(1)
         cart_p.go_to_cart_page()
 
@@ -133,8 +132,8 @@ class TestVerifyProductsDisplayedContents:
     def test_verify_clicking_add_to_cart_button_display_view_cart_button(self, setup):
         header = Header(self.driver)
 
-        simple_products = self.homepage.get_simple_products()
-        self.homepage.click_add_to_cart_button(simple_products[0])
+        one_simple_product = self.homepage.get_simple_products()[0]
+        self.homepage.click_add_to_cart_button(one_simple_product)
 
         header.wait_until_cart_item_count(1)
         
@@ -142,3 +141,37 @@ class TestVerifyProductsDisplayedContents:
         
         view_cart_button_text = self.homepage.get_displayed_view_cart_button()
         assert view_cart_button_text == "View cart", "The new displayed button text is wrong"
+    
+    @pytest.mark.tcid112
+    def test_verify_clicking_add_to_cart_button_display_view_cart_button(self, setup):
+        # get a displayed sale item
+        one_product_on_sale = self.homepage.get_products_on_sale()[0]
+        # Verify original price and sale price is displayed
+        original = self.homepage.verify_original_price_is_displayed_on_sale_product(one_product_on_sale)
+        sale = self.homepage.verify_sale_price_is_displayed_on_sale_product(one_product_on_sale)
+        # verify original price has strike through
+        assert original.tag_name == "del", "Original price should have strike through"
+
+    @pytest.mark.tcid113
+    def test_verify_sorting_result_text_is_displayed_next_to_dropdown(self, setup):
+        self.homepage.verify_sorting_result_text_is_displayed_top()
+
+        sorting_result_text = self.homepage.get_displayed_sorting_result_text_top()
+        expected_text = f"Showing 1–16 of 17 results"
+            # use regrex and modify
+        assert sorting_result_text == expected_text, "The sorting result text is wrong"
+    
+    @pytest.mark.tcid114
+    def test_verify_products_on_home_page_have_image(self, setup):
+        random_product = self.homepage.get_random_product()
+        product_img = self.homepage.get_displayed_product_img(random_product)
+
+        src = product_img.get_attribute("src")
+        assert src.endswith(".jpg") == True, "Product on homepage should have image with .jpg" 
+
+
+
+# refactor
+# didnt verify "is didplayed"
+# what about searching element from parents element?
+# in case above, locator doesnt work

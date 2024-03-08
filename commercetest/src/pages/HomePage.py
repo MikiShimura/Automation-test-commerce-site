@@ -96,3 +96,14 @@ class HomePage(HomePageLocator):
     def get_displayed_view_cart_button(self):
         return self.sl.wait_and_get_text(self.VIEW_CART_BUTTON_HOME)
     
+    def verify_original_price_is_displayed_on_sale_product(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, "span.price del")
+    
+    def verify_sale_price_is_displayed_on_sale_product(self, parent):
+        return parent.find_element(By.CSS_SELECTOR, "span.price ins")
+    
+    def verify_sorting_result_text_is_displayed_top(self):
+        self.sl.wait_until_element_is_visible(self.SORTING_RESULTS_BOTTOM)
+
+    def get_displayed_sorting_result_text_top(self):
+        return self.sl.wait_and_get_text(self.SORTING_RESULTS_BOTTOM)

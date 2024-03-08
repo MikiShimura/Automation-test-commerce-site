@@ -19,6 +19,8 @@ class HomePageLocator():
 
     SORTING_DROPDOWN_TOP = (By.XPATH, '//*[@id="main"]/div[1]')
     SORTING_DROPDOWN_BOTTOM = (By.XPATH, '//*[@id="main"]/div[2]')
+    SORTING_RESULTS_TOP = (By.XPATH, '//*[@id="main"]/div[1]/p')
+    SORTING_RESULTS_BOTTOM = (By.XPATH, '//*[@id="main"]/div[2]/p')
 
     NAV_HOME = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[1]/a')
     NAV_CART = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[2]/a')
