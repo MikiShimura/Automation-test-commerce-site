@@ -54,6 +54,9 @@ class HomePage(HomePageLocator):
     def clicking_random_product_page(self):
         self.sl.wait_and_click(self.RANDOM_PRODUCTS)
 
+    def click_first_product(self):
+        self.sl.wait_and_click(self.DISPLAYED_PRODUCTS)
+
     def get_random_product(self):
         return self.sl.wait_and_get_element(self.RANDOM_PRODUCTS)
     

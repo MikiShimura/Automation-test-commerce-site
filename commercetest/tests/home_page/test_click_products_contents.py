@@ -6,7 +6,7 @@ from commercetest.src.pages.ProductDetailedPage import ProductDetailedPage
 from commercetest.src.helpers.generic_helpers import generate_product_page_url_from_product_name
 
 @pytest.mark.usefixtures("init_driver")
-class TestVerifyProductsDisplayedContents:
+class TestClickProductsContents:
     @pytest.fixture(scope='class')
     def setup(self, request):
 

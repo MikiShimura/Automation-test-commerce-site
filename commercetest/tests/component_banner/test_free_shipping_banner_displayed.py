@@ -10,7 +10,7 @@ from commercetest.src.pages.NotificationBar import NotificationBar
 @pytest.mark.regression
 @pytest.mark.usefixtures("init_driver")
 
-class TestVerifyBannerDisplayed:
+class TestFreeShippingBannerDisplayed:
 
     expected_free_shipping_text = "Free shipping on orders over $50"
 

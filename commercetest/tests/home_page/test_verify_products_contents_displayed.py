@@ -2,7 +2,7 @@ import pytest
 from commercetest.src.pages.HomePage import HomePage
 
 @pytest.mark.usefixtures("init_driver")
-class TestVerifyProductsDisplayedContents:
+class TestVerifyProductsContentsDisplayed:
     @pytest.fixture(scope='class')
     def setup(self, request):
 
