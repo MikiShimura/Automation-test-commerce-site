@@ -39,30 +39,26 @@ class TestVerifyProductsDisplayedContents:
 
         self.homepage.click_first_add_to_cart_button()
         self.header.wait_until_cart_item_count(1)
-        self.cart_p.go_to_cart_page()
-
+    
         # Cart
+        self.cart_p.go_to_cart_page()
         self.search.verify_search_field_is_displayed()
-
-        self.cart_p.click_on_proceed_to_checkout()
 
         # Checkout
+        self.cart_p.click_on_proceed_to_checkout()
         self.search.verify_search_field_is_displayed()
 
-        self.account_o.go_to_my_account()
 
         # MyAccount
+        self.account_o.go_to_my_account()
         self.search.verify_search_field_is_displayed()
-
-        self.sample_p.go_to_sample_page()
 
         # SamplePage
+        self.sample_p.go_to_sample_page()
         self.search.verify_search_field_is_displayed()
 
-        self.homepage.go_to_homepage()
-        self.homepage.click_first_product()
-
         # Product detail pages
+        self.homepage.go_to_homepage()
         base_url = get_base_url()
         for i in self.products_list:
             self.driver.get(base_url + "/" + i + "/")
@@ -70,8 +66,40 @@ class TestVerifyProductsDisplayedContents:
 
     @pytest.mark.tcid116
     def test_verify_search_field_is_functional_on_every_page(self, setup):
-        pass
-    # Go through each page and search for a product that exists. Verify search result is displayed
+        search_item = "logo"
+        search_result = f"Search results: “{search_item}”"
+
+        # Home
+        self.search.verify_search_field_is_functional(search_item, search_result)
+        self.homepage.go_to_homepage()
+
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1)
+    
+        # Cart
+        self.cart_p.go_to_cart_page()
+        self.search.verify_search_field_is_functional(search_item, search_result)
+        self.cart_p.go_to_cart_page()
+
+        # Checkout
+        self.cart_p.click_on_proceed_to_checkout()
+        self.search.verify_search_field_is_functional(search_item, search_result)
+
+
+        # MyAccount
+        self.account_o.go_to_my_account()
+        self.search.verify_search_field_is_functional(search_item, search_result)
+
+        # SamplePage
+        self.sample_p.go_to_sample_page()
+        self.search.verify_search_field_is_functional(search_item, search_result)
+
+        # Product detail pages
+        self.homepage.go_to_homepage()
+        base_url = get_base_url()
+        for i in self.products_list:
+            self.driver.get(base_url + "/" + i + "/")
+            self.search.verify_search_field_is_functional(search_item, search_result)
 
     @pytest.mark.tcid117
     def test_verify_searching_non_exist_product_shows_correct_message(self, setup):
