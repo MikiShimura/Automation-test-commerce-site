@@ -11,3 +11,5 @@ class CartPageLocator():
 
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")
 
+    REMOVE_COUPON_BTN = (By.CSS_SELECTOR, "a.woocommerce-remove-coupon")
+

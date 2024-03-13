@@ -44,3 +44,14 @@ class CartPage(CartPageLocator):
     
     def wait_until_error_is_displayed(self, exp_err):
         self.sl.wait_until_element_contains_text(self.ERRORS_UL, exp_err)
+
+    def wait_until_remove_coupon_button_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.REMOVE_COUPON_BTN)
+
+    def click_remove_coupon(self):
+        self.sl.wait_and_click(self.REMOVE_COUPON_BTN)
+
+    def wait_until_success_message_is_displayed(self, exp_message):
+        self.sl.wait_until_element_contains_text(self.CART_PAGE_MESSAGE, exp_message)
+
+    
