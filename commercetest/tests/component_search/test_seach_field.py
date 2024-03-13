@@ -8,13 +8,11 @@ from commercetest.src.pages.MyAccountSignedOut import MyAccountSignedOut
 from commercetest.src.pages.SamplePage import SamplePage
 from commercetest.src.pages.ProductDetailedPage import ProductDetailedPage
 from commercetest.src.helpers.config_helpers import get_base_url
+from commercetest.src.configs.generic_configs import GenericConfigs
+import random
 
 @pytest.mark.usefixtures("init_driver")
-class TestVerifyProductsDisplayedContents:
-
-    products_list = ["album", "beanie", "beanie-with-logo", "belt", "cap", "hoodie", "hoodie-with-logo", 
-                    "hoodie-with-zipper", "logo-collection", "long-sleeve-tee", "polo", "single",
-                    "sunglasses", "t-shirt", "t-shirt-with-logo", "v-neck-t-shirt", "wordpress-pennant"]
+class TestSearchField:
     
     @pytest.fixture(scope='class')
     def setup(self, request):
@@ -60,13 +58,15 @@ class TestVerifyProductsDisplayedContents:
         # Product detail pages
         self.homepage.go_to_homepage()
         base_url = get_base_url()
-        for i in self.products_list:
+        products_list = GenericConfigs.PRODUCTS_LIST
+        for i in products_list:
             self.driver.get(base_url + "/" + i + "/")
             self.search.wait_until_search_field_is_displayed()
 
     @pytest.mark.tcid116
     def test_verify_search_field_is_functional_on_every_page(self, setup):
-        search_item = "logo"
+        products_list = GenericConfigs.PRODUCTS_LIST
+        search_item = products_list[random.randint(0, len(products_list)-1)]
         search_result = f"Search results: “{search_item}”"
 
         # Home
@@ -97,7 +97,7 @@ class TestVerifyProductsDisplayedContents:
         # Product detail pages
         self.homepage.go_to_homepage()
         base_url = get_base_url()
-        for i in self.products_list:
+        for i in products_list:
             self.driver.get(base_url + "/" + i + "/")
             self.search.verify_search_field_is_functional(search_item, search_result)
 
@@ -105,6 +105,8 @@ class TestVerifyProductsDisplayedContents:
     def test_verify_searching_non_exist_product_shows_correct_message(self, setup):
         search_item = "abcd"
         exp_err = "No products were found matching your selection."
-        
+
         self.search.input_search_item_on_search_field(search_item)
         self.search.wait_until_expected_error_is_displayed(exp_err)
+
+        
