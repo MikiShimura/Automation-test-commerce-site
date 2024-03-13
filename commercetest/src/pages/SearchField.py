@@ -9,17 +9,20 @@ class SearchField(SearchFieldLocator):
         self.driver = driver
         self.sl = SeleniumExtended(self.driver)
 
-    def verify_search_field_is_displayed(self):
+    def wait_until_search_field_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.SEARCH_FIELD)
  
     def verify_search_field_is_functional(self, search_item, search_result):
         self.input_search_item_on_search_field(search_item)
-        self.verify_search_result(search_result)
+        self.wait_until_search_result_contains_expected_result(search_result)
 
     def input_search_item_on_search_field(self, search_item):
         self.sl.wait_and_input_text(self.SEARCH_FIELD, search_item)
         actions = ActionChains(self.driver)
         actions.send_keys(Keys.ENTER).perform()
 
-    def verify_search_result(self, search_result):
+    def wait_until_search_result_contains_expected_result(self, search_result):
         self.sl.wait_until_element_contains_text(self.SEARCH_RESULT, search_result)
+    
+    def wait_until_expected_error_is_displayed(self, exp_err):
+        self.sl.wait_until_element_contains_text(self.SEARCH_ERROR, exp_err)

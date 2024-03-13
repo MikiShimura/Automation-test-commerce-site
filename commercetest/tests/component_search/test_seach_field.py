@@ -35,34 +35,34 @@ class TestVerifyProductsDisplayedContents:
     @pytest.mark.tcid115
     def test_verify_search_field_is_visible_on_every_page(self, setup):
         # Home
-        self.search.verify_search_field_is_displayed()
+        self.search.wait_until_search_field_is_displayed()
 
         self.homepage.click_first_add_to_cart_button()
         self.header.wait_until_cart_item_count(1)
     
         # Cart
         self.cart_p.go_to_cart_page()
-        self.search.verify_search_field_is_displayed()
+        self.search.wait_until_search_field_is_displayed()
 
         # Checkout
         self.cart_p.click_on_proceed_to_checkout()
-        self.search.verify_search_field_is_displayed()
+        self.search.wait_until_search_field_is_displayed()
 
 
         # MyAccount
         self.account_o.go_to_my_account()
-        self.search.verify_search_field_is_displayed()
+        self.search.wait_until_search_field_is_displayed()
 
         # SamplePage
         self.sample_p.go_to_sample_page()
-        self.search.verify_search_field_is_displayed()
+        self.search.wait_until_search_field_is_displayed()
 
         # Product detail pages
         self.homepage.go_to_homepage()
         base_url = get_base_url()
         for i in self.products_list:
             self.driver.get(base_url + "/" + i + "/")
-            self.search.verify_search_field_is_displayed()
+            self.search.wait_until_search_field_is_displayed()
 
     @pytest.mark.tcid116
     def test_verify_search_field_is_functional_on_every_page(self, setup):
@@ -103,5 +103,8 @@ class TestVerifyProductsDisplayedContents:
 
     @pytest.mark.tcid117
     def test_verify_searching_non_exist_product_shows_correct_message(self, setup):
-        pass
-    # Input random string into the search field. Verify the result page shows message"No products were found matching your selection." is displayed.
+        search_item = "abcd"
+        exp_err = "No products were found matching your selection."
+        
+        self.search.input_search_item_on_search_field(search_item)
+        self.search.wait_until_expected_error_is_displayed(exp_err)
