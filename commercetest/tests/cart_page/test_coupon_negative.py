@@ -6,37 +6,32 @@ from commercetest.src.configs.generic_configs import GenericConfigs
 
 @pytest.mark.usefixtures("init_driver")
 class TestCouponNegative:
+    @pytest.fixture(scope='class')
+    def setup(self, request):
+
+        request.cls.homepage = HomePage(self.driver)
+        request.cls.header = Header(self.driver)
+        request.cls.cart_p = CartPage(self.driver)
+
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        yield
 
     @pytest.mark.tcid66
-    def test_apply_expired_coupon(self):
-        home_p = HomePage(self.driver)
-        header = Header(self.driver)
-        cart_p = CartPage(self.driver)
-
-        home_p.go_to_homepage()
-        home_p.click_first_add_to_cart_button()
-        header.wait_until_cart_item_count(1) 
-        header.click_on_cart_on_right_header()
-
+    def test_apply_expired_coupon(self, setup):
         coupon_code = GenericConfigs.EXPIRED_COUPON
-        cart_p.apply_coupon(coupon_code, expected_success=False)
+        self.cart_p.apply_coupon(coupon_code, expected_success=False)
 
         expected_err = f'Coupon "{coupon_code}" is expired!'
-        cart_p.wait_until_error_is_displayed(expected_err)
+        self.cart_p.wait_until_error_is_displayed(expected_err)
     
     @pytest.mark.tcid121
-    def test_apply_invalid_coupon(self):
-        home_p = HomePage(self.driver)
-        header = Header(self.driver)
-        cart_p = CartPage(self.driver)
-
-        home_p.go_to_homepage()
-        home_p.click_first_add_to_cart_button()
-        header.wait_until_cart_item_count(1) 
-        header.click_on_cart_on_right_header()
-
+    def test_apply_invalid_coupon(self, setup):
         coupon_code = GenericConfigs.INVALID_COUPON
-        cart_p.apply_coupon(coupon_code, expected_success=False)
+        self.cart_p.apply_coupon(coupon_code, expected_success=False)
 
         expected_err = f'Coupon "{coupon_code}" does not exist!'
-        cart_p.wait_until_error_is_displayed(expected_err)
+        self.cart_p.wait_until_error_is_displayed(expected_err)
