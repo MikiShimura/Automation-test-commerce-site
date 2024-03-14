@@ -54,4 +54,8 @@ class CartPage(CartPageLocator):
     def wait_until_success_message_is_displayed(self, exp_message):
         self.sl.wait_until_element_contains_text(self.CART_PAGE_MESSAGE, exp_message)
 
+    def wait_until_cart_header_is_displayed(self, exp_title):
+        self.sl.wait_until_element_contains_text(self.ENTRY_HEADER_TITLE, exp_title)
+
+        
     

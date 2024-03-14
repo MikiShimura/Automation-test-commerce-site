@@ -11,3 +11,5 @@ class CartPageLocator():
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.woocommerce-message")
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")
     CART_EMPTY_MESSAGE = (By.CSS_SELECTOR, "p.cart-empty.woocommerce-info")
+
+    ENTRY_HEADER_TITLE = (By.CSS_SELECTOR, "header.entry-header h1.entry-title")
