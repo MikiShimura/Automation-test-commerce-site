@@ -7,6 +7,10 @@ class HomePageLocator():
     PRODUCT_IMG_HOME = (By.CSS_SELECTOR, 'img.attachment-woocommerce_thumbnail')
     PRODUCT_PRICE_HOME = (By.CSS_SELECTOR, 'span.price')
     ADD_TO_CART_BUTTON_HOME = (By.CSS_SELECTOR, 'a.add_to_cart_button')
+    SECOUND_ADD_TO_CART_BUTTON_HOME = (By.XPATH, '//*[@id="main"]/ul/li[2]/a[2]')
+    THIRD_ADD_TO_CART_BUTTON_HOME = (By.XPATH, '//*[@id="main"]/ul/li[3]/a[2]')
+    FOURCE_ADD_TO_CART_BUTTON_HOME = (By.XPATH, '//*[@id="main"]/ul/li[4]/a[2]')
+    RANDOM_ADD_TO_CART_BUTTON_HOME = (By.XPATH, f'//*[@id="main"]/ul/li[{random.randint(1, GenericConfigs.NUMBER_OF_DISPLAYED_PRODUCTS_HOME_PAGE)}]/a[2]')
     VIEW_CART_BUTTON_HOME = (By.CSS_SELECTOR, 'a.added_to_cart.wc-forward')
 
     DISPLAYED_PRODUCTS = (By.CSS_SELECTOR, 'li.product')

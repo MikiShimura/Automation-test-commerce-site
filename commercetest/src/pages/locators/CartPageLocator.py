@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 class CartPageLocator():
     PRODUCT_NAMES_IN_CART = (By.CSS_SELECTOR, "tr.cart_item td.product-name")
 
+    PRODUCT_REMOVE_BTN = (By.CSS_SELECTOR, "a.remove")
+
     COUPON_FIELD = (By.ID, "coupon_code")
     APPLY_COUPON_BTN = (By.CSS_SELECTOR, "button[name='apply_coupon']")
     PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, "a.checkout-button")
@@ -14,7 +16,6 @@ class CartPageLocator():
 
     ENTRY_HEADER_TITLE = (By.CSS_SELECTOR, "header.entry-header h1.entry-title")
 
-    TABLE_HEADER_TITLES = (By.CSS_SELECTOR, "table.shop_table thead tr")
     TABLE_HEADER_PRODUCT_NAME = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-name")
     TABLE_HEADER_PRODUCT_PRICE = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-price")
     TABLE_HEADER_PRODUCT_QUANTITY = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-quantity")

@@ -2,17 +2,15 @@ import pytest
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.pages.Header import Header
 from commercetest.src.pages.CartPage import CartPage
-from commercetest.src.configs.generic_configs import GenericConfigs
 
 @pytest.mark.usefixtures("init_driver")
-class TestCouponNegative:
+class TestCartDisplayed:
     @pytest.fixture(scope='class')
     def setup(self, request):
 
         request.cls.homepage = HomePage(self.driver)
         request.cls.header = Header(self.driver)
         request.cls.cart_p = CartPage(self.driver)
-
         
         yield
 

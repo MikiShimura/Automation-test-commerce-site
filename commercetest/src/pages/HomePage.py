@@ -16,6 +16,19 @@ class HomePage(HomePageLocator):
     def click_first_add_to_cart_button(self):
         self.sl.wait_and_click(self.ADD_TO_CART_BUTTON_HOME)
     
+    def click_second_add_to_cart_button(self):
+        self.sl.wait_and_click(self.SECOUND_ADD_TO_CART_BUTTON_HOME)
+    
+    def click_third_add_to_cart_button(self):
+        self.sl.wait_and_click(self.THIRD_ADD_TO_CART_BUTTON_HOME)
+
+    def click_fource_add_to_cart_button(self):
+        self.sl.wait_and_click(self.FOURCE_ADD_TO_CART_BUTTON_HOME)
+    
+    def click_first_add_to_cart_button_on_multiple_times(self, number_times):
+        for i in range(number_times):
+            self.sl.wait_and_click(self.ADD_TO_CART_BUTTON_HOME)
+
     def get_number_of_displayed_products(self):
         displayed_products = self.sl.wait_and_get_elements(self.DISPLAYED_PRODUCTS)
         number_of_products = len(displayed_products)

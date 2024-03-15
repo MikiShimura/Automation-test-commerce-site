@@ -2,6 +2,7 @@ from commercetest.src.SeleniumExtended import SeleniumExtended
 from commercetest.src.pages.locators.CartPageLocator import CartPageLocator
 from commercetest.src.helpers.config_helpers import get_base_url
 import logging as logger
+import time
 
 class CartPage(CartPageLocator):
 
@@ -61,27 +62,30 @@ class CartPage(CartPageLocator):
         self.sl.wait_until_element_is_visible(self.TABLE_HEADER_TITLES)
 
     def get_displayed_table_header_titles(self):
-        name = self.get_displayed_table_header_product_name()
-        price = self.get_displayed_table_header_product_price()
-        quantity = self.get_displayed_table_header_product_quantity()
-        subtotal = self.get_displayed_table_header_product_subtotal()
+        name = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_NAME)
+        price = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_PRICE)
+        quantity = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_QUANTITY)
+        subtotal = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_SUBTOTAL)
         return [name, price, quantity, subtotal]
 
-    def get_displayed_table_header_product_name(self):    
-        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_NAME)
-        return titles
-    
-    def get_displayed_table_header_product_price(self):    
-        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_PRICE)
-        return titles
-    
-    def get_displayed_table_header_product_quantity(self):    
-        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_QUANTITY)
-        return titles
-    
-    def get_displayed_table_header_product_subtotal(self):    
-        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_SUBTOTAL)
-        return titles
+    def wait_and_click_first_remove_button(self):
+        self.sl.wait_and_click(self.PRODUCT_REMOVE_BTN)
 
+    def wait_until_remove_message_is_displayed(self):
+        removed_product = self.sl.wait_and_get_text(self.PRODUCT_NAMES_IN_CART)
+        expected_message = f"“{removed_product}” removed. Undo?"
+        # print(removed_product)
         
+        time.sleep(2) # better way?
+
+        displayed_message = self.sl.wait_and_get_text(self.CART_PAGE_MESSAGE)
+        # print(displayed_message)
+        assert displayed_message == expected_message, "Wrong removed message is displayed."
     
+    def verify_cart_empty_message_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CART_EMPTY_MESSAGE)
+
+    def verify_number_of_product_in_cart(self, exp_number):
+        number_of_poducts = self.sl.wait_and_get_elements(self.PRODUCT_NAMES_IN_CART)
+        assert len(number_of_poducts) == exp_number, "Unexpected number of product is in cart"
+        
