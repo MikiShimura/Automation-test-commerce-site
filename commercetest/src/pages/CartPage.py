@@ -57,5 +57,31 @@ class CartPage(CartPageLocator):
     def wait_until_cart_header_is_displayed(self, exp_title):
         self.sl.wait_until_element_contains_text(self.ENTRY_HEADER_TITLE, exp_title)
 
+    def wait_until_table_header_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.TABLE_HEADER_TITLES)
+
+    def get_displayed_table_header_titles(self):
+        name = self.get_displayed_table_header_product_name()
+        price = self.get_displayed_table_header_product_price()
+        quantity = self.get_displayed_table_header_product_quantity()
+        subtotal = self.get_displayed_table_header_product_subtotal()
+        return [name, price, quantity, subtotal]
+
+    def get_displayed_table_header_product_name(self):    
+        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_NAME)
+        return titles
+    
+    def get_displayed_table_header_product_price(self):    
+        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_PRICE)
+        return titles
+    
+    def get_displayed_table_header_product_quantity(self):    
+        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_QUANTITY)
+        return titles
+    
+    def get_displayed_table_header_product_subtotal(self):    
+        titles = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_SUBTOTAL)
+        return titles
+
         
     
