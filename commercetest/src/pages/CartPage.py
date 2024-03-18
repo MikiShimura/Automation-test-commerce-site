@@ -88,4 +88,9 @@ class CartPage(CartPageLocator):
     def verify_number_of_product_in_cart(self, exp_number):
         number_of_poducts = self.sl.wait_and_get_elements(self.PRODUCT_NAMES_IN_CART)
         assert len(number_of_poducts) == exp_number, "Unexpected number of product is in cart"
-        
+
+    def wait_until_product_images_are_displayed(self):
+        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_IMAGES)
+    
+    def get_product_images(self):
+        return self.sl.wait_and_get_elements(self.PRODUCT_IMAGES)

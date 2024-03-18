@@ -20,3 +20,5 @@ class CartPageLocator():
     TABLE_HEADER_PRODUCT_PRICE = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-price")
     TABLE_HEADER_PRODUCT_QUANTITY = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-quantity")
     TABLE_HEADER_PRODUCT_SUBTOTAL = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-subtotal")
+    
+    PRODUCT_IMAGES = (By.CSS_SELECTOR, "td.wc-block-cart-item__image a img")

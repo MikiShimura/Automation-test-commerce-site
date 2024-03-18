@@ -43,3 +43,29 @@ class TestCartDisplayed:
         header_titles_list = self.cart_p.get_displayed_table_header_titles()
         expected_list = ['Product', 'Price', 'Quantity', 'Subtotal']
         assert header_titles_list==expected_list, "At least 1 header title is wrong."
+
+    @pytest.mark.tcid136
+    def test_verify_product_image_is_displayed_in_cart_when_one_item_in_cart(self, setup):
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.wait_until_product_images_are_displayed()
+
+    @pytest.mark.tcid137
+    def test_verify_all_product_image_is_displayed_when_two_items_in_cart(self, setup):
+        number_of_product_in_cart = 2
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.homepage.click_second_add_to_cart_button()
+        self.header.wait_until_cart_item_count(number_of_product_in_cart) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_images_are_displayed()
+        images = self.cart_p.get_product_images()
+        assert len(images) == number_of_product_in_cart, f"Number of images should be {number_of_product_in_cart}"
+
+    @pytest.mark.tcid138
+    def test_verify_product_name_is_displayed_in_cart_and_link_to_detail_page(self, setup):
+        pass
