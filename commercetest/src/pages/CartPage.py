@@ -59,7 +59,7 @@ class CartPage(CartPageLocator):
         self.sl.wait_until_element_contains_text(self.ENTRY_HEADER_TITLE, exp_title)
 
     def wait_until_table_header_is_displayed(self):
-        self.sl.wait_until_element_is_visible(self.TABLE_HEADER_TITLES)
+        self.sl.wait_until_all_elements_are_visible(self.TABLE_HEADER_TITLES)
 
     def get_displayed_table_header_titles(self):
         name = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_NAME)
