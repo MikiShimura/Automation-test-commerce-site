@@ -46,7 +46,7 @@ class TestCartDisplayed:
         assert header_titles_list==expected_list, "At least 1 header title is wrong."
 
     @pytest.mark.tcid136
-    def test_verify_product_image_is_displayed_in_cart_when_one_item_in_cart(self, setup):
+    def test_verify_product_image_is_displayed_when_one_item_in_cart(self, setup):
         self.homepage.go_to_homepage()
         self.homepage.click_first_add_to_cart_button()
         self.header.wait_until_cart_item_count(1) 
@@ -83,3 +83,27 @@ class TestCartDisplayed:
         current_url = self.driver.current_url
 
         assert current_url==expected_url, "Cliking button open wrong page." 
+
+    @pytest.mark.tcid139
+    def test_verify_correct_product_price_is_displayed_when_one_item_in_cart(self, setup):
+        pass
+
+    @pytest.mark.tcid140
+    def test_verify_correct_product_prices_are_displayed_when_two_items_in_cart(self, setup):
+        pass
+    
+    @pytest.mark.tcid141
+    def test_verify_correct_product_quantity_is_displayed_when_one_item_in_cart(self, setup):
+        pass
+
+    @pytest.mark.tcid142
+    def test_verify_correct_product_quantities_are_displayed_when_two_items_in_cart(self, setup):
+        pass
+
+    @pytest.mark.tcid143
+    def test_verify_correct_product_subtotal_is_displayed_when_one_item_in_cart(self, setup):
+        pass
+
+    @pytest.mark.tcid144
+    def test_verify_correct_product_subtotals_are_displayed_when_two_items_in_cart(self, setup):
+        pass
