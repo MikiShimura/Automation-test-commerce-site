@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 class CartPageLocator():
     PRODUCT_NAMES_IN_CART = (By.CSS_SELECTOR, "tr.cart_item td.product-name")
+    PRODUCT_IMAGES_IN_CART = (By.CSS_SELECTOR, "td.product-thumbnail a img")
 
     PRODUCT_REMOVE_BTN = (By.CSS_SELECTOR, "a.remove")
 
@@ -21,5 +22,3 @@ class CartPageLocator():
     TABLE_HEADER_PRODUCT_PRICE = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-price")
     TABLE_HEADER_PRODUCT_QUANTITY = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-quantity")
     TABLE_HEADER_PRODUCT_SUBTOTAL = (By.CSS_SELECTOR, "table.shop_table thead tr th.product-subtotal")
-    
-    PRODUCT_IMAGES = (By.CSS_SELECTOR, "td.wc-block-cart-item__image a img")

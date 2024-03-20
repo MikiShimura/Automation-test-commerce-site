@@ -2,6 +2,7 @@ import pytest
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.pages.Header import Header
 from commercetest.src.pages.CartPage import CartPage
+from commercetest.src.helpers.generic_helpers import generate_product_page_url_from_product_name
 
 @pytest.mark.usefixtures("init_driver")
 class TestCartDisplayed:
@@ -68,4 +69,17 @@ class TestCartDisplayed:
 
     @pytest.mark.tcid138
     def test_verify_product_name_is_displayed_in_cart_and_link_to_detail_page(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.wait_until_product_name_is_displayed()
+
+        product_name = self.cart_p.get_product_name().text
+        expected_url = generate_product_page_url_from_product_name(product_name)
+
+        self.cart_p.click_product_name_link()
+        current_url = self.driver.current_url
+
+        assert current_url==expected_url, "Cliking button open wrong page." 

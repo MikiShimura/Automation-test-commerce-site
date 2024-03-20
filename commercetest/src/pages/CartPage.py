@@ -68,6 +68,11 @@ class CartPage(CartPageLocator):
         subtotal = self.sl.wait_and_get_text(self.TABLE_HEADER_PRODUCT_SUBTOTAL)
         return [name, price, quantity, subtotal]
 
+    # def get_displayed_table_header_titles_modi(self):
+    #     header_title_elements = self.sl.wait_and_get_elements(self.TABLE_HEADER_TITLES)
+    #     header_titles = [i.text for i in header_title_elements]
+    #     return header_titles
+
     def wait_and_click_first_remove_button(self):
         self.sl.wait_and_click(self.PRODUCT_REMOVE_BTN)
 
@@ -90,7 +95,18 @@ class CartPage(CartPageLocator):
         assert len(number_of_poducts) == exp_number, "Unexpected number of product is in cart"
 
     def wait_until_product_images_are_displayed(self):
-        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_IMAGES)
+        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_IMAGES_IN_CART)
     
     def get_product_images(self):
-        return self.sl.wait_and_get_elements(self.PRODUCT_IMAGES)
+        return self.sl.wait_and_get_elements(self.PRODUCT_IMAGES_IN_CART)
+    
+    def wait_until_product_name_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.PRODUCT_NAMES_IN_CART)
+
+    def get_product_name(self):
+        return self.sl.wait_and_get_element(self.PRODUCT_NAMES_IN_CART)
+    
+    def click_product_name_link(self):
+        self.sl.wait_and_click(self.PRODUCT_NAMES_IN_CART)
+
+    
