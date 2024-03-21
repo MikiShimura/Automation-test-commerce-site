@@ -3,6 +3,7 @@ from commercetest.src.pages.locators.CartPageLocator import CartPageLocator
 from commercetest.src.helpers.config_helpers import get_base_url
 import logging as logger
 import time
+import re
 
 class CartPage(CartPageLocator):
 
@@ -113,13 +114,22 @@ class CartPage(CartPageLocator):
         self.sl.wait_until_all_elements_are_visible(self.PRODUCT_PRICES_IN_CART)
     
     def get_product_prices(self):
-        return self.sl.wait_and_get_elements(self.PRODUCT_PRICES_IN_CART)
+        prices_elements = self.sl.wait_and_get_elements(self.PRODUCT_PRICES_IN_CART)
+        prices = [int(re.sub(r"\D", "", i.text)) for i in prices_elements]
+        return prices
     
     def wait_until_product_quantities_are_displayed(self):
         self.sl.wait_until_all_elements_are_visible(self.PRODUCT_QUANTITIES_IN_CART)
     
     def get_product_quantities(self):
         quantities_elements = self.sl.wait_and_get_elements(self.PRODUCT_QUANTITIES_IN_CART)
-        quantities = [i.get_attribute("value") for i in quantities_elements]
+        quantities = [int(i.get_attribute("value")) for i in quantities_elements]
         return quantities
-        
+
+    def wait_until_product_subtotals_are_displayed(self):
+        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_SUBTOTALS_IN_CART)
+
+    def get_product_subtotals(self):
+        subtotals_elements = self.sl.wait_and_get_elements(self.PRODUCT_SUBTOTALS_IN_CART)
+        subtotals = [int(re.sub(r"\D", "", i.text)) for i in subtotals_elements]
+        return subtotals

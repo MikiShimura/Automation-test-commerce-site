@@ -103,7 +103,7 @@ class TestCartDisplayed:
         self.header.click_on_cart_on_right_header()
         
         self.cart_p.wait_until_product_prices_are_displayed()
-        prices = self.cart_p.get_product_images()
+        prices = self.cart_p.get_product_prices()
         assert len(prices) == number_of_product_in_cart, f"{number_of_product_in_cart} prices should be displayed"
     
     @pytest.mark.tcid141
@@ -133,15 +133,42 @@ class TestCartDisplayed:
         
         self.cart_p.wait_until_product_quantities_are_displayed()
 
-        expected_number_of_quantities = ["2", "1"]
+        expected_number_of_quantities = [2, 1]
         number_of_quantities = self.cart_p.get_product_quantities()
         print(number_of_quantities)
-        assert number_of_quantities == expected_number_of_quantities, f"Product quantities are wrong"
+        assert number_of_quantities == expected_number_of_quantities, f"At least 1 product quantity is wrong"
 
     @pytest.mark.tcid143
     def test_verify_correct_product_subtotal_is_displayed_when_one_item_in_cart(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_subtotals_are_displayed()
+
+        prices = self.cart_p.get_product_prices()
+        subtotals = self.cart_p.get_product_subtotals()
+        assert prices == subtotals, f"Product subtotal is wrong"
+        # How I can get just the value without currency?
 
     @pytest.mark.tcid144
     def test_verify_correct_product_subtotals_are_displayed_when_two_items_in_cart(self, setup):
-        pass
+        # 2 first products and 1 secound product
+        number_of_product_in_cart = 2
+        quantity_of_first_product = 2
+        quantity_of_second_product = 1
+        
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_on_multiple_times(quantity_of_first_product)
+        self.homepage.click_second_add_to_cart_button()
+        self.header.wait_until_cart_item_count(number_of_product_in_cart) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_subtotals_are_displayed()
+        
+        prices = self.cart_p.get_product_prices()
+        expected_subtotals = [prices[0]*quantity_of_first_product, prices[1]*quantity_of_second_product]
+        subtotals = self.cart_p.get_product_subtotals()
+    
+        assert subtotals == expected_subtotals, f"At least 1 subtotal is wrong"

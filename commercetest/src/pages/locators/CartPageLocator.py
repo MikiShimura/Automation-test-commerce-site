@@ -5,6 +5,7 @@ class CartPageLocator():
     PRODUCT_IMAGES_IN_CART = (By.CSS_SELECTOR, "td.product-thumbnail a img")
     PRODUCT_PRICES_IN_CART = (By.CSS_SELECTOR, "td.product-price")
     PRODUCT_QUANTITIES_IN_CART = (By.CSS_SELECTOR, "td.product-quantity div input")
+    PRODUCT_SUBTOTALS_IN_CART = (By.CSS_SELECTOR, "td.product-subtotal")
 
     PRODUCT_REMOVE_BTN = (By.CSS_SELECTOR, "a.remove")
 
