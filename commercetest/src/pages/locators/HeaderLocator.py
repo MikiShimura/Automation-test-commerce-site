@@ -8,6 +8,8 @@ class HeaderLocator():
     SHOP_HEADER = (By.CSS_SELECTOR, "header.woocommerce-products-header")
     HEADER_MENU = (By.CSS_SELECTOR, "div.menu")
 
+    MENU_NAV_ITEMS = (By.CSS_SELECTOR, "div.menu ul.nav-menu li a")
+
     NAV_HOME = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[1]/a')
     NAV_CART = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[2]/a')
     NAV_CHECKOUT = (By.XPATH, '//*[@id="site-navigation"]/div[1]/ul/li[3]/a')
