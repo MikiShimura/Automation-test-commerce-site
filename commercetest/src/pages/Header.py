@@ -33,11 +33,9 @@ class Header(HeaderLocator):
         
     def get_top_nav_items_text(self):
         items = self.sl.wait_and_get_elements(self.MENU_NAV_ITEMS)
-        items_text_list = []
-        for i in items: 
-            items_text_list.append(i.text)
+        items_text_list = [i.text for i in items]
         return items_text_list
-    
+
     def get_top_nav_items_url(self):
         locators_list = [self.NAV_HOME, self.NAV_CART, self.NAV_CHECKOUT, self.NAV_MY_ACCOUNT, self.NAV_SAMPLE]
         url_list = []

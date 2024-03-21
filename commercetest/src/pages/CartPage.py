@@ -109,4 +109,17 @@ class CartPage(CartPageLocator):
     def click_product_name_link(self):
         self.sl.wait_and_click(self.PRODUCT_NAMES_IN_CART)
 
+    def wait_until_product_prices_are_displayed(self):
+        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_PRICES_IN_CART)
     
+    def get_product_prices(self):
+        return self.sl.wait_and_get_elements(self.PRODUCT_PRICES_IN_CART)
+    
+    def wait_until_product_quantities_are_displayed(self):
+        self.sl.wait_until_all_elements_are_visible(self.PRODUCT_QUANTITIES_IN_CART)
+    
+    def get_product_quantities(self):
+        quantities_elements = self.sl.wait_and_get_elements(self.PRODUCT_QUANTITIES_IN_CART)
+        quantities = [i.get_attribute("value") for i in quantities_elements]
+        return quantities
+        

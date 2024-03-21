@@ -65,7 +65,7 @@ class TestCartDisplayed:
         
         self.cart_p.wait_until_product_images_are_displayed()
         images = self.cart_p.get_product_images()
-        assert len(images) == number_of_product_in_cart, f"Number of images should be {number_of_product_in_cart}"
+        assert len(images) == number_of_product_in_cart, f"{number_of_product_in_cart} images should be displayed"
 
     @pytest.mark.tcid138
     def test_verify_product_name_is_displayed_in_cart_and_link_to_detail_page(self, setup):
@@ -86,19 +86,57 @@ class TestCartDisplayed:
 
     @pytest.mark.tcid139
     def test_verify_correct_product_price_is_displayed_when_one_item_in_cart(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.wait_until_product_prices_are_displayed()
 
     @pytest.mark.tcid140
     def test_verify_correct_product_prices_are_displayed_when_two_items_in_cart(self, setup):
-        pass
+        number_of_product_in_cart = 2
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.homepage.click_second_add_to_cart_button()
+        self.header.wait_until_cart_item_count(number_of_product_in_cart) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_prices_are_displayed()
+        prices = self.cart_p.get_product_images()
+        assert len(prices) == number_of_product_in_cart, f"{number_of_product_in_cart} prices should be displayed"
     
     @pytest.mark.tcid141
     def test_verify_correct_product_quantity_is_displayed_when_one_item_in_cart(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_quantities_are_displayed()
+
+        expected_number_of_quantities = ["1"]
+        number_of_quantities = self.cart_p.get_product_quantities()
+        print(number_of_quantities)
+        assert number_of_quantities == expected_number_of_quantities, f"Product quantity is wrong"
+
 
     @pytest.mark.tcid142
     def test_verify_correct_product_quantities_are_displayed_when_two_items_in_cart(self, setup):
-        pass
+        # 2 first products and 1 secound product
+        number_of_product_in_cart = 2
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_on_multiple_times(2)
+        self.homepage.click_second_add_to_cart_button()
+        self.header.wait_until_cart_item_count(number_of_product_in_cart) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_product_quantities_are_displayed()
+
+        expected_number_of_quantities = ["2", "1"]
+        number_of_quantities = self.cart_p.get_product_quantities()
+        print(number_of_quantities)
+        assert number_of_quantities == expected_number_of_quantities, f"Product quantities are wrong"
 
     @pytest.mark.tcid143
     def test_verify_correct_product_subtotal_is_displayed_when_one_item_in_cart(self, setup):
