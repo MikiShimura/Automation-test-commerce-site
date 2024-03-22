@@ -172,3 +172,29 @@ class TestCartDisplayed:
         subtotals = self.cart_p.get_product_subtotals()
     
         assert subtotals == expected_subtotals, f"At least 1 subtotal is wrong"
+
+    @pytest.mark.tcid145
+    def test_verify_cart_update_button_is_visible_and_disable(self, setup):
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+        
+        self.cart_p.wait_until_cart_update_button_is_displayed()
+        
+        availability = self.cart_p.wait_and_check_cart_update_button_is_enable_or_disable()
+        assert availability == False, "Cart update button should be disabled"
+
+    @pytest.mark.tcid146
+    def test_verify_cart_update_button_is_enabled_when_quantity_change(self, setup):
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.change_product_quantity()
+
+        availability = self.cart_p.wait_and_check_cart_update_button_is_enable_or_disable()
+        assert availability == True, "Cart update button should be unabled"
+
+    

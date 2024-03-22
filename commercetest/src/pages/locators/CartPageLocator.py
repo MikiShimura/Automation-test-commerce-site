@@ -9,6 +9,8 @@ class CartPageLocator():
 
     PRODUCT_REMOVE_BTN = (By.CSS_SELECTOR, "a.remove")
 
+    CART_UPDATE_BTN = (By.NAME, "update_cart")
+
     COUPON_FIELD = (By.ID, "coupon_code")
     APPLY_COUPON_BTN = (By.CSS_SELECTOR, "button[name='apply_coupon']")
     PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, "a.checkout-button")

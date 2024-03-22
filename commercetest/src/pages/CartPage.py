@@ -133,3 +133,16 @@ class CartPage(CartPageLocator):
         subtotals_elements = self.sl.wait_and_get_elements(self.PRODUCT_SUBTOTALS_IN_CART)
         subtotals = [int(re.sub(r"\D", "", i.text)) for i in subtotals_elements]
         return subtotals
+    
+    def wait_until_cart_update_button_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CART_UPDATE_BTN)
+
+    def wait_and_check_cart_update_button_is_enable_or_disable(self):
+        cart_update_button = self.sl.wait_and_get_element(self.CART_UPDATE_BTN)
+        return  cart_update_button.is_enabled()
+
+    def change_product_quantity(self, quantity=None):
+        self.sl.wait_and_get_element(self.PRODUCT_QUANTITIES_IN_CART).clear()
+        
+        quantity = quantity if quantity else "2"
+        self.sl.wait_and_input_text(self.PRODUCT_QUANTITIES_IN_CART, quantity)
