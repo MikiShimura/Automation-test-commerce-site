@@ -146,3 +146,12 @@ class CartPage(CartPageLocator):
         
         quantity = quantity if quantity else "2"
         self.sl.wait_and_input_text(self.PRODUCT_QUANTITIES_IN_CART, quantity)
+
+    def wait_until_cart_subtotals_header_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CART_SUBTOTALS_HEADER)
+
+    def get_subtotals_header_text(self):
+        return self.sl.wait_and_get_text(self.CART_SUBTOTALS_HEADER)
+    
+    def wait_until_subtotal_label_is_displayed(self, exp_text):
+        self.sl.wait_until_element_contains_text(self.CART_SUBTOTALS_SUBTOTAL_LABEL, exp_text)
