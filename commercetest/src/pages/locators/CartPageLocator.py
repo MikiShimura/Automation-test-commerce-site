@@ -16,8 +16,9 @@ class CartPageLocator():
     PROCEED_TO_CHECKOUT_BTN = (By.CSS_SELECTOR, "a.checkout-button")
     REMOVE_COUPON_BTN = (By.CSS_SELECTOR, "a.woocommerce-remove-coupon")
 
-    CART_SUBTOTALS_HEADER = (By.CSS_SELECTOR, "div.cart_totals h2")
-    CART_SUBTOTALS_SUBTOTAL_LABEL = (By.CSS_SELECTOR, "tr.cart-subtotal")
+    CART_SUBTOTAL_HEADER = (By.CSS_SELECTOR, "div.cart_totals h2")
+    CART_SUBTOTAL_SUBTOTAL_LABEL = (By.CSS_SELECTOR, "tr.cart-subtotal")
+    CART_SUBTOTAL_SUBTOTAL_NUMBER = (By.CSS_SELECTOR, "tr.cart-subtotal td")
 
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.woocommerce-message")
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")

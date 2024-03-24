@@ -148,10 +148,18 @@ class CartPage(CartPageLocator):
         self.sl.wait_and_input_text(self.PRODUCT_QUANTITIES_IN_CART, quantity)
 
     def wait_until_cart_subtotals_header_is_displayed(self):
-        self.sl.wait_until_element_is_visible(self.CART_SUBTOTALS_HEADER)
+        self.sl.wait_until_element_is_visible(self.CART_SUBTOTAL_HEADER)
 
     def get_subtotals_header_text(self):
-        return self.sl.wait_and_get_text(self.CART_SUBTOTALS_HEADER)
+        return self.sl.wait_and_get_text(self.CART_SUBTOTAL_HEADER)
     
     def wait_until_subtotal_label_is_displayed(self, exp_text):
-        self.sl.wait_until_element_contains_text(self.CART_SUBTOTALS_SUBTOTAL_LABEL, exp_text)
+        self.sl.wait_until_element_contains_text(self.CART_SUBTOTAL_SUBTOTAL_LABEL, exp_text)
+
+    def get_cart_subtotal(self):
+        subtotal_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SUBTOTAL_NUMBER)
+        subtotal = int(re.sub(r"\D", "", subtotal_element.text)) 
+        return subtotal
+    
+    def click_cart_update_button(self):
+        self.sl.wait_and_click(self.CART_UPDATE_BTN)
