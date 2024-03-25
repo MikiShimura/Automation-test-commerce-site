@@ -163,3 +163,16 @@ class CartPage(CartPageLocator):
     
     def click_cart_update_button(self):
         self.sl.wait_and_click(self.CART_UPDATE_BTN)
+
+    def wait_until_shipping_label_is_displayed(self, exp_text):
+        self.sl.wait_until_element_contains_text(self.CART_SUBTOTAL_SHIPPING_LABEL, exp_text)
+
+    def wait_until_shipping_flat_rate_method_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CART_SUBTOTAL_SHIPPING_FLAT_RATE)
+    
+    def get_shipping_flat_rate_method(self):
+        return self.sl.wait_and_get_element(self.CART_SUBTOTAL_SHIPPING_FLAT_RATE)
+    
+    def get_shipping_flat_rate_fee(self):
+        fee_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SHIPPING_FLAT_RATE_FEE)
+        return fee_element.text

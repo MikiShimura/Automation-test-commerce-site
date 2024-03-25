@@ -30,3 +30,6 @@ class HomePageLocator():
     VARIABLE_PRODUCTS = (By.CSS_SELECTOR, "li.product.product-type-variable")
     PRODUCTS_ON_SALE = (By.CSS_SELECTOR, "li.product.sale")
     SALE_BADGE = (By.CSS_SELECTOR, "span.onsale")
+
+    ADD_TO_CART_BTN_VIRTUAL_PRODUCT = (By.CSS_SELECTOR, "li.virtual a.add_to_cart_button")
+    ADD_TO_CART_BTN_PHYSICAL_PRODUCT = (By.CSS_SELECTOR, "li.shipping-taxable a.add_to_cart_button")

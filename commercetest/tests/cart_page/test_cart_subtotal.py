@@ -99,7 +99,7 @@ class TestCartSubtotal:
         self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
 
         update_cart_subtotal = self.cart_p.get_cart_subtotal()
-        print(cart_subtotal, update_cart_subtotal)
+
         assert cart_subtotal != update_cart_subtotal, "Cart subtotal is not updated"
 
     @pytest.mark.tcid153
@@ -116,7 +116,7 @@ class TestCartSubtotal:
         self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
 
         update_cart_subtotal = self.cart_p.get_cart_subtotal()
-        print(cart_subtotal, update_cart_subtotal)
+
         assert cart_subtotal != update_cart_subtotal, "Cart subtotal is not updated"
 
 
