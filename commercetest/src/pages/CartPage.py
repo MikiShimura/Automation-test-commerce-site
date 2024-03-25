@@ -157,8 +157,8 @@ class CartPage(CartPageLocator):
         self.sl.wait_until_element_contains_text(self.CART_SUBTOTAL_SUBTOTAL_LABEL, exp_text)
 
     def get_cart_subtotal(self):
-        subtotal_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SUBTOTAL_NUMBER)
-        subtotal = int(re.sub(r"\D", "", subtotal_element.text)) 
+        subtotal_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SUBTOTAL_VALUE)
+        subtotal = float(int(re.sub(r"\D", "", subtotal_element.text)) / 100)
         return subtotal
     
     def click_cart_update_button(self):
@@ -179,3 +179,11 @@ class CartPage(CartPageLocator):
     
     def wait_until_shipping_option_is_not_displayed(self):
         self.sl.wait_until_element_is_invisible(self.CART_SUBTOTAL_SHIPPING_OPTION)
+
+    def wait_until_total_label_is_displayed(self, exp_text):
+        self.sl.wait_until_element_contains_text(self.CART_SUBTOTAL_TOTAL_LABEL, exp_text)
+
+    def get_cart_total(self):
+        total_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_TOTAL_VALUE)
+        total = float(int(re.sub(r"\D", "", total_element.text)) / 100)
+        return total

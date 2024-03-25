@@ -18,12 +18,14 @@ class CartPageLocator():
 
     CART_SUBTOTAL_HEADER = (By.CSS_SELECTOR, "div.cart_totals h2")
     CART_SUBTOTAL_SUBTOTAL_LABEL = (By.CSS_SELECTOR, "tr.cart-subtotal")
-    CART_SUBTOTAL_SUBTOTAL_NUMBER = (By.CSS_SELECTOR, "tr.cart-subtotal td")
+    CART_SUBTOTAL_SUBTOTAL_VALUE = (By.CSS_SELECTOR, "tr.cart-subtotal td")
     CART_SUBTOTAL_SHIPPING_LABEL = (By.CSS_SELECTOR, "tr.shipping")
     CART_SUBTOTAL_SHIPPING_OPTION = (By.CSS_SELECTOR, "tr.shipping td")
     CART_SUBTOTAL_SHIPPING_METHODS = (By.CSS_SELECTOR, "ul.woocommerce-shipping-methods li input")
     CART_SUBTOTAL_SHIPPING_FLAT_RATE = (By.ID, "shipping_method_0_flat_rate2")
     CART_SUBTOTAL_SHIPPING_FLAT_RATE_FEE = (By.XPATH, '//*[@id="shipping_method"]/li[2]/label/span/bdi')
+    CART_SUBTOTAL_TOTAL_LABEL = (By.CSS_SELECTOR, "tr.order-total")
+    CART_SUBTOTAL_TOTAL_VALUE = (By.CSS_SELECTOR, "tr.order-total td")
 
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.woocommerce-message")
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")
