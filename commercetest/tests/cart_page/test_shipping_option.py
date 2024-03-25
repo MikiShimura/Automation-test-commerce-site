@@ -48,6 +48,11 @@ class TestShippingOption:
         flat_rate = self.cart_p.get_shipping_flat_rate_fee()
         assert flat_rate == "$3.00", "Flat rate fee is wrong"
 
-    @pytest.mark.tcid156
+    @pytest.mark.tcid157
     def test_shipping_option_is_not_displayed_when_only_digital_items_in_cart(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_digital_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.wait_until_shipping_option_is_not_displayed()

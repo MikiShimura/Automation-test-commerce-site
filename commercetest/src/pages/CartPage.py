@@ -176,3 +176,6 @@ class CartPage(CartPageLocator):
     def get_shipping_flat_rate_fee(self):
         fee_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SHIPPING_FLAT_RATE_FEE)
         return fee_element.text
+    
+    def wait_until_shipping_option_is_not_displayed(self):
+        self.sl.wait_until_element_is_invisible(self.CART_SUBTOTAL_SHIPPING_OPTION)
