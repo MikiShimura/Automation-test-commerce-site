@@ -22,6 +22,7 @@ class CartPageLocator():
     CART_SUBTOTAL_SHIPPING_LABEL = (By.CSS_SELECTOR, "tr.shipping")
     CART_SUBTOTAL_SHIPPING_OPTION = (By.CSS_SELECTOR, "tr.shipping td")
     CART_SUBTOTAL_SHIPPING_METHODS = (By.CSS_SELECTOR, "ul.woocommerce-shipping-methods li input")
+    CART_SUBTOTAL_SHIPPING_FREE = (By.ID, "shipping_method_0_free_shipping1")
     CART_SUBTOTAL_SHIPPING_FLAT_RATE = (By.ID, "shipping_method_0_flat_rate2")
     CART_SUBTOTAL_SHIPPING_FLAT_RATE_FEE = (By.XPATH, '//*[@id="shipping_method"]/li[2]/label/span/bdi')
     CART_SUBTOTAL_TOTAL_LABEL = (By.CSS_SELECTOR, "tr.order-total")

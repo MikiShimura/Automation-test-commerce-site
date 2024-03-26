@@ -43,6 +43,9 @@ class CartPage(CartPageLocator):
             
     def click_on_proceed_to_checkout(self):
         self.sl.wait_and_click(self.PROCEED_TO_CHECKOUT_BTN)
+
+    def wait_until_proceed_to_checkout_btn_is_displayed(self, exp_text):
+        self.sl.wait_until_element_contains_text(self.PROCEED_TO_CHECKOUT_BTN, exp_text)
     
     def wait_until_error_is_displayed(self, exp_err):
         self.sl.wait_until_element_contains_text(self.ERRORS_UL, exp_err)
@@ -175,7 +178,13 @@ class CartPage(CartPageLocator):
     
     def get_shipping_flat_rate_fee(self):
         fee_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_SHIPPING_FLAT_RATE_FEE)
-        return fee_element.text
+        return fee_element
+    
+    def wait_until_free_shipping_method_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CART_SUBTOTAL_SHIPPING_FREE)
+
+    def wait_until_free_shipping_method_is_not_displayed(self):
+        self.sl.wait_until_element_is_invisible(self.CART_SUBTOTAL_SHIPPING_FREE)
     
     def wait_until_shipping_option_is_not_displayed(self):
         self.sl.wait_until_element_is_invisible(self.CART_SUBTOTAL_SHIPPING_OPTION)
@@ -187,3 +196,10 @@ class CartPage(CartPageLocator):
         total_element = self.sl.wait_and_get_element(self.CART_SUBTOTAL_TOTAL_VALUE)
         total = float(int(re.sub(r"\D", "", total_element.text)) / 100)
         return total
+    
+    def verify_cart_subtotal_is_above_fifty_doller(self):
+        subtotal_value = self.get_cart_subtotal()
+        if subtotal_value >= 50 :
+            return True
+        else:
+            return False

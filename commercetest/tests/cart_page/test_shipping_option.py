@@ -2,6 +2,7 @@ import pytest
 from commercetest.src.pages.HomePage import HomePage
 from commercetest.src.pages.Header import Header
 from commercetest.src.pages.CartPage import CartPage
+import time
 
 @pytest.mark.usefixtures("init_driver")
 class TestShippingOption:
@@ -56,3 +57,48 @@ class TestShippingOption:
         self.header.click_on_cart_on_right_header()
 
         self.cart_p.wait_until_shipping_option_is_not_displayed()
+
+    @pytest.mark.tcid162
+    def test_free_shipping_option_is_dispalyed_when_cart_subtotal_above_fifty(self, setup):
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_physical_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.change_product_quantity(5)
+        self.cart_p.click_cart_update_button()
+        self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
+
+        if not self.cart_p.verify_cart_subtotal_is_above_fifty_doller():
+            self.cart_p.change_product_quantity(10)
+            self.cart_p.click_cart_update_button()
+            self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
+
+        self.cart_p.wait_until_free_shipping_method_is_displayed()
+
+    @pytest.mark.tcid163
+    def test_free_shipping_option_is_not_dispalyed_when_cart_subtotal_below_fifty(self, setup):
+        # Add over $50 worth products to cart. Veriyf the free shpping option is displayed.
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_physical_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.change_product_quantity(5)
+        self.cart_p.click_cart_update_button()
+        self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
+
+        if not self.cart_p.verify_cart_subtotal_is_above_fifty_doller():
+            self.cart_p.change_product_quantity(10)
+            self.cart_p.click_cart_update_button()
+            self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
+
+        self.cart_p.wait_until_free_shipping_method_is_displayed()
+
+        # Remove items to make total price under $50. Verity the Free shipping disapeares.
+        self.cart_p.change_product_quantity(1)
+        self.cart_p.click_cart_update_button()
+        self.cart_p.wait_until_success_message_is_displayed("Cart updated.")
+
+        if not self.cart_p.verify_cart_subtotal_is_above_fifty_doller():
+            self.cart_p.wait_until_free_shipping_method_is_not_displayed()

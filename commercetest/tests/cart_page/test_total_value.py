@@ -37,6 +37,10 @@ class TestTotalValue:
         else :
             shipping_fee = 3.00
         # Here better to get condition from whether radio is selected or not 
+        # if free_shipping is selected:
+        #     shipping_fee = 0
+        # else:
+        #     shipping_fee = 3.00
         expected_cart_total = cart_subtotal + shipping_fee
 
         cart_total = self.cart_p.get_cart_total()
