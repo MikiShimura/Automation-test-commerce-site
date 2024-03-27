@@ -124,3 +124,31 @@ class TestCartSubtotal:
     def test_subtotal_column_get_updated_when_quantity_get_updated(self, setup):
         # Cange the value of the quanitty field. Verify the "Update cart" button becomes active.
         pass
+
+    @pytest.mark.tcid164
+    def test_subtotal_section_has_shipping_to_XX_text(self, setup):
+        # Use regex to match the XX which is a state name.
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_physical_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.verify_shipping_destination_text()
+
+    @pytest.mark.tcid165
+    def test_subtotal_section_has_change_address_link(self, setup):
+        pass
+
+    @pytest.mark.tcid166
+    def test_click_change_address_link_open_form(self, setup):
+        pass
+
+    @pytest.mark.tcid167
+    def test_submit_change_address_change_shipping_to_XX_text(self, setup):
+        # Fill all the fields with other information and save. Verify the message changes
+        pass
+
+    @pytest.mark.tcid168
+    def test_select_only_state_on_address_change(self, setup):
+        # The defaualt country should be United States. Change the state and verify you can save it.
+        pass

@@ -201,5 +201,10 @@ class CartPage(CartPageLocator):
         subtotal_value = self.get_cart_subtotal()
         if subtotal_value >= 50 :
             return True
-        else:
-            return False
+        
+    def get_shipping_destination_text(self):
+        return self.sl.wait_and_get_text(self.SHIPPING_DESTINATION)
+    
+    def verify_shipping_destination_text(self):
+        text = self.get_shipping_destination_text()
+        assert re.fullmatch(r'Shipping to [A-Z]{2}.', text) != None, "Default shipping destination text is wrong"

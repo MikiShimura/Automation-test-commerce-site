@@ -28,6 +28,8 @@ class CartPageLocator():
     CART_SUBTOTAL_TOTAL_LABEL = (By.CSS_SELECTOR, "tr.order-total")
     CART_SUBTOTAL_TOTAL_VALUE = (By.CSS_SELECTOR, "tr.order-total td")
 
+    SHIPPING_DESTINATION = (By.CSS_SELECTOR, "p.woocommerce-shipping-destination")
+
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.woocommerce-message")
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")
     CART_EMPTY_MESSAGE = (By.CSS_SELECTOR, "p.cart-empty.woocommerce-info")
