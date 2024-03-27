@@ -208,3 +208,12 @@ class CartPage(CartPageLocator):
     def verify_shipping_destination_text(self):
         text = self.get_shipping_destination_text()
         assert re.fullmatch(r'Shipping to [A-Z]{2}.', text) != None, "Default shipping destination text is wrong"
+
+    def wait_until_change_address_link_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.CHANGE_ADDRESS_LINK)
+
+    def click_change_address_link(self):
+        self.sl.wait_and_click(self.CHANGE_ADDRESS_LINK)
+
+    def wait_until_change_address_form(self):
+        self.sl.wait_until_element_is_visible(self.CHANGE_ADDRESS_FORM)

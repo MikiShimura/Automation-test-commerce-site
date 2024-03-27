@@ -137,11 +137,22 @@ class TestCartSubtotal:
 
     @pytest.mark.tcid165
     def test_subtotal_section_has_change_address_link(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_physical_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.wait_until_change_address_link_is_displayed()
 
     @pytest.mark.tcid166
     def test_click_change_address_link_open_form(self, setup):
-        pass
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button_of_physical_product()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        self.cart_p.click_change_address_link()
+        self.cart_p.wait_until_change_address_form()
 
     @pytest.mark.tcid167
     def test_submit_change_address_change_shipping_to_XX_text(self, setup):
