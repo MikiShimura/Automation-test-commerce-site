@@ -150,6 +150,9 @@ class CartPage(CartPageLocator):
         quantity = quantity if quantity else "2"
         self.sl.wait_and_input_text(self.PRODUCT_QUANTITIES_IN_CART, quantity)
 
+    def change_product_quantity_by_clicikng_arrow(self):
+        pass
+
     def wait_until_cart_subtotals_header_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.CART_SUBTOTAL_HEADER)
 
@@ -215,5 +218,31 @@ class CartPage(CartPageLocator):
     def click_change_address_link(self):
         self.sl.wait_and_click(self.CHANGE_ADDRESS_LINK)
 
-    def wait_until_change_address_form(self):
+    def wait_until_change_address_form_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.CHANGE_ADDRESS_FORM)
+
+    def select_shipping_country(self):
+        self.sl.wait_and_click(self.SELECT_SHIPPING_COUNTRY)
+        self.sl.wait_and_click(self.SELECT_SHIPPING_COUNTRY_GB)
+        # option = self.driver.find_element("id", "select2-calc_shipping_country-result-grj3-GB")
+        # self.sl.wait_and_click(option)
+
+        # what about changing attribute directry like SetAttribute("value", "UK")?
+
+    def input_shipping_state(self, state=None):
+        state = state if state else "State"
+        self.sl.wait_and_input_text(self.SHIPPING_STATE_FIELD, state)
+
+    def input_shipping_city(self, city=None):
+        city = city if city else "City"
+        self.sl.wait_and_input_text(self.SHIPPING_CITY_FIELD, city)
+
+    def input_shipping_zipcode(self, zipcode=None):
+        zipcode = zipcode if zipcode else "11111"
+        self.sl.wait_and_input_text(self.SHIPPING_ZIP_FIELD, zipcode)
+
+    def fill_in_shipping_info(self, state=None, city=None, zipcode=None):
+        self.select_shipping_country(state=state)
+        self.input_shipping_state(state=state)
+        self.input_shipping_city(city=city)
+        self.input_shipping_zipcode(zipcode=zipcode)

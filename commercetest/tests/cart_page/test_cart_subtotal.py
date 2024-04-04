@@ -152,12 +152,21 @@ class TestCartSubtotal:
         self.header.click_on_cart_on_right_header()
 
         self.cart_p.click_change_address_link()
-        self.cart_p.wait_until_change_address_form()
+        self.cart_p.wait_until_change_address_form_is_displayed()
 
     @pytest.mark.tcid167
     def test_submit_change_address_change_shipping_to_XX_text(self, setup):
         # Fill all the fields with other information and save. Verify the message changes
         pass
+        # self.homepage.go_to_homepage()
+        # self.homepage.click_first_add_to_cart_button_of_physical_product()
+        # self.header.wait_until_cart_item_count(1) 
+        # self.header.click_on_cart_on_right_header()
+
+        # self.cart_p.click_change_address_link()
+        # self.cart_p.wait_until_change_address_form_is_displayed()
+
+        # self.cart_p.fill_in_shipping_info()
 
     @pytest.mark.tcid168
     def test_select_only_state_on_address_change(self, setup):

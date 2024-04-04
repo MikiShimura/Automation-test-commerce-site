@@ -31,6 +31,11 @@ class CartPageLocator():
     SHIPPING_DESTINATION = (By.CSS_SELECTOR, "p.woocommerce-shipping-destination")
     CHANGE_ADDRESS_LINK = (By.CSS_SELECTOR, "a.shipping-calculator-button")
     CHANGE_ADDRESS_FORM = (By.CSS_SELECTOR, "section.shipping-calculator-form")
+    SELECT_SHIPPING_COUNTRY = (By.ID, "select2-calc_shipping_country-container")
+    SELECT_SHIPPING_COUNTRY_GB = (By.ID, "select2-calc_shipping_country-result-grj3-GB")
+    SHIPPING_STATE_FIELD = (By.ID, "calc_shipping_state")
+    SHIPPING_CITY_FIELD = (By.ID, "calc_shipping_city")
+    SHIPPING_ZIPCODE_FIELD = (By.ID, "calc_shipping_postcode")
 
     CART_PAGE_MESSAGE = (By.CSS_SELECTOR, "div.woocommerce-message")
     ERRORS_UL = (By.CSS_SELECTOR, "ul.woocommerce-error")

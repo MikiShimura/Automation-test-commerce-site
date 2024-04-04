@@ -195,7 +195,7 @@ class TestCartDisplayed:
         self.cart_p.change_product_quantity()
 
         availability = self.cart_p.wait_and_check_cart_update_button_is_enable_or_disable()
-        assert availability == True, "Cart update button should be unabled"
+        assert availability == True, "Cart update button should be enabled"
 
     @pytest.mark.tcid161
     def test_proceed_to_checkout_button_is_displayed_with_correct_label(self, setup):
@@ -206,4 +206,21 @@ class TestCartDisplayed:
 
         self.cart_p.wait_until_proceed_to_checkout_btn_is_displayed("Proceed to checkout")
 
-    
+    @pytest.mark.tcid169
+    def test_change_quantity_of_product_by_input_number(self, setup):
+        self.homepage.go_to_homepage()
+        self.homepage.click_first_add_to_cart_button()
+        self.header.wait_until_cart_item_count(1) 
+        self.header.click_on_cart_on_right_header()
+
+        number_to_input = 3
+        self.cart_p.change_product_quantity(number_to_input)
+
+        # get a quantity of 1 product
+        number_of_quantity = self.cart_p.get_product_quantities()[0]
+
+        assert number_to_input == number_of_quantity, "Number of quantity should be changed as inputed"
+
+    @pytest.mark.tcid170
+    def test_change_quantity_of_product_by_clicking_arrow(self, setup):
+        pass    
