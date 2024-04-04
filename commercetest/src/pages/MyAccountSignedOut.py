@@ -39,3 +39,9 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
     def click_register_button(self):
         logger.debug("Clicking 'Register' button")
         self.sl.wait_and_click(self.REGISTER_BTN)
+
+    def wait_until_login_form_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.LOGIN_FORM)
+
+    def wait_until_register_form_is_displayed(self):
+        self.sl.wait_until_element_is_visible(self.REGISTER_FORM)
