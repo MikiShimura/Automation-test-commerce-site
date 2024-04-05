@@ -45,3 +45,9 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
 
     def wait_until_register_form_is_displayed(self):
         self.sl.wait_until_element_is_visible(self.REGISTER_FORM)
+
+    def get_login_username_label(self):
+        return self.sl.wait_and_get_element(self.LOGIN_USER_NAME_LABEL)
+
+    def get_login_password_label(self):
+        return self.sl.wait_and_get_element(self.LOGIN_PASSWORD_LABEL)

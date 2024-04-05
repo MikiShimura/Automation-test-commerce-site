@@ -19,6 +19,19 @@ class TestContentsDisplayed:
         self.my_account_o.wait_until_login_form_is_displayed()
 
     @pytest.mark.tcid7
-    def test_form_displregister_ayed(self, setup):
+    def test_form_displregister_displayed(self, setup):
         self.my_account_o.wait_until_register_form_is_displayed()
 
+    @pytest.mark.tcid8
+    def test_correct_login_username_label_displayed(self, setup):
+        expected_label = "Username or email address *"
+        label_element = self.my_account_o.get_login_username_label()
+        
+        assert label_element.text == expected_label, "Incorrect login username label is displayed"
+
+    @pytest.mark.tcid9
+    def test_correct_login_password_label_displayed(self, setup):
+        expected_label = "Password *"
+        label_element = self.my_account_o.get_login_password_label()
+        
+        assert label_element.text == expected_label, "Incorrect login password label is displayed"

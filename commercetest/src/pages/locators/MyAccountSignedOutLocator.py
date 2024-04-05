@@ -3,7 +3,9 @@ from selenium.webdriver.common.by import By
 class MyAccountSignedOutLocator():
     LOGIN_FORM = (By.CSS_SELECTOR, 'form.woocommerce-form-login')
     
+    LOGIN_USER_NAME_LABEL = (By.CSS_SELECTOR, 'label[for="username"]')
     LOGIN_USER_NAME = (By.ID, "username")
+    LOGIN_PASSWORD_LABEL = (By.CSS_SELECTOR, 'label[for="password"]')
     LOGIN_PASSWORD = (By.ID, "password")
     LOGIN_BTN = (By.CSS_SELECTOR, 'button[value="Log in"]')
 
