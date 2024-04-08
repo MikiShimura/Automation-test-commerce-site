@@ -18,3 +18,7 @@ class TestRegisterNewUser:
         my_account_o.input_register_password("abcd1234")
         my_account_o.click_register_button()
         my_account_i.verify_user_is_signed_in()
+
+    @pytest.mark.tcid14
+    def test_register_valid_new_user_get_logged_in(self):
+        pass
