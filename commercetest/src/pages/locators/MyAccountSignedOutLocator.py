@@ -13,6 +13,7 @@ class MyAccountSignedOutLocator():
 
     REGISTER_FORM = (By.CSS_SELECTOR, 'form.woocommerce-form-register')
 
+    REGISTER_EMAIL_LABEL = (By.CSS_SELECTOR, 'label[for="reg_email"]')
     REGISTER_EMAIL = (By.ID, "reg_email")
     REGISTER_PASSWORD = (By.ID, "reg_password")
     REGISTER_BTN = (By.CSS_SELECTOR, 'button[value="Register"]')

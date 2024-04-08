@@ -51,3 +51,6 @@ class MyAccountSignedOut(MyAccountSignedOutLocator):
 
     def get_login_password_label(self):
         return self.sl.wait_and_get_element(self.LOGIN_PASSWORD_LABEL)
+    
+    def get_register_username_label(self):
+        return self.sl.wait_and_get_element(self.REGISTER_EMAIL_LABEL)
