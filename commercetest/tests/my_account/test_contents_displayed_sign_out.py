@@ -3,12 +3,11 @@ from commercetest.src.pages.MyAccountSignedOut import MyAccountSignedOut
 from commercetest.src.pages.MyAccountSignedIn import MyAccountSignedIn
 
 @pytest.mark.usefixtures("init_driver")
-class TestContentsDisplayed:
+class TestContentsDisplayedSignOut:
     @pytest.fixture(scope='class')
     def setup(self, request):
 
         request.cls.my_account_o = MyAccountSignedOut(self.driver)
-        request.cls.my_account_i = MyAccountSignedIn(self.driver)
 
         self.my_account_o.go_to_my_account()
 
