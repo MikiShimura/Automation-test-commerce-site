@@ -7,6 +7,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options as ChOptions
 from selenium.webdriver.firefox.options import Options as FfOptions
 import os
+import pytest_html
 
 @pytest.fixture(scope="class") 
 def init_driver(request):
@@ -43,3 +44,25 @@ def init_driver(request):
     # set class variable, driver here is browser
     yield
     # driver.quit()
+
+# Report
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    extras = getattr(report, "extras", [])
+    # only add additional images on failure
+    if report.when == "call":
+        xfail = hasattr(report, "wasxfail")
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            is_frontednd_test = True if "init_driver" in item.fixturenames else False
+            if is_frontednd_test :
+                results_dir = os.environ.get("RESULTS_DIR")
+                if not results_dir:
+                    raise Exception("Environment variable 'RESULTS_DIR' must be set.")
+                screen_shot_path = os.path.join(results_dir, item.name + ".png")
+                driver_fixture = item.funcargs["request"]
+                driver_fixture.cls.driver.save_screenshot(screen_shot_path)
+                # import pdb; pdb.set_trace()
+                extras.append(pytest_html.extras.image(screen_shot_path))
+        report.extras = extras
